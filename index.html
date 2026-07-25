@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lifecoon — Suivi Santé : votre carnet de santé de poche</title>
+<meta name="description" content="Lifecoon, par Bengacoon : suivez votre tension, votre glycémie, votre poids et vos traitements, gérez vos ordonnances et générez un rapport PDF pour votre médecin. 100 % local et chiffré.">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Lifecoon — Suivi Santé">
+<meta property="og:description" content="Votre carnet de santé de poche : constantes, traitements, ordonnances, rendez-vous et rapport médecin. 100 % local et chiffré.">
+<meta property="og:image" content="assets/icon.png">
+<style>
+  :root{
+    --teal:#457B7A; --teal-fonce:#2F5654; --or:#C98A4B; --or-clair:#E7C79B;
+    --creme:#F5F6F4; --creme-2:#E9ECE7; --texte:#243230; --muted:#63706C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--texte); background:var(--creme); line-height:1.6;
+  }
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:rgba(245,246,244,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--creme-2)}
+  header .wrap{display:flex;align-items:center;gap:12px;height:64px}
+  header img{width:36px;height:36px;border-radius:9px}
+  header .brand{font-weight:800;font-size:19px;letter-spacing:.2px}
+  header .brand small{display:block;font-weight:600;font-size:11px;color:var(--muted);letter-spacing:.3px}
+  header nav{margin-left:auto;display:flex;gap:22px;font-size:14px;font-weight:600}
+  header nav a{color:var(--muted);text-decoration:none}
+  header nav a:hover{color:var(--teal)}
+  @media(max-width:640px){header nav{display:none}}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg,var(--teal) 0%,var(--teal-fonce) 100%);color:#fff;text-align:center;padding:72px 0 84px;position:relative;overflow:hidden}
+  .hero .blob{position:absolute;border-radius:50%;opacity:.09;background:var(--or-clair)}
+  .hero .b1{width:260px;height:260px;top:-70px;left:-50px}
+  .hero .b2{width:190px;height:190px;bottom:-60px;right:-40px}
+  .hero .logo{width:98px;height:98px;border-radius:24px;box-shadow:0 12px 34px rgba(0,0,0,.28);margin-bottom:22px;position:relative}
+  .hero h1{font-size:44px;line-height:1.1;font-weight:800;letter-spacing:-.5px;position:relative}
+  .hero .par{color:var(--or-clair);font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;position:relative}
+  .hero p.lead{max-width:620px;margin:18px auto 0;font-size:18px;color:#EAF1F0;position:relative}
+  @media(max-width:640px){.hero h1{font-size:33px}.hero p.lead{font-size:16px}}
+
+  .stores{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;position:relative}
+  .store{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--teal);font-weight:700;
+    padding:13px 22px;border-radius:14px;text-decoration:none;font-size:15px;box-shadow:0 6px 18px rgba(0,0,0,.18);transition:transform .15s}
+  .store:hover{transform:translateY(-2px)}
+  .store .em{font-size:20px}
+  .store small{display:block;font-weight:600;font-size:11px;opacity:.7}
+
+  /* Sections */
+  section{padding:66px 0}
+  .eyebrow{color:var(--or);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;text-align:center}
+  h2{font-size:31px;font-weight:800;text-align:center;margin:8px 0 8px;letter-spacing:-.3px}
+  .sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 42px;font-size:16px}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--creme-2);border-radius:18px;padding:26px 22px;transition:transform .15s,box-shadow .15s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(69,123,122,.12)}
+  .card .em{font-size:30px;display:inline-block;margin-bottom:12px}
+  .card h3{font-size:18px;font-weight:800;margin-bottom:7px;color:var(--teal)}
+  .card p{color:var(--muted);font-size:14.5px}
+
+  /* Free band */
+  .free-band{background:var(--creme-2)}
+  .free-band .box{background:#fff;border:1px solid #E2E6DF;border-radius:22px;padding:40px 34px;text-align:center;max-width:720px;margin:0 auto;position:relative}
+  .free-band .price{display:inline-block;background:var(--or);color:#3a2e12;font-weight:800;padding:6px 16px;border-radius:999px;font-size:14px;margin-bottom:14px}
+  .free-band h2{margin-top:0}
+  .free-band ul{list-style:none;display:inline-block;text-align:left;margin:18px auto 0;color:var(--texte)}
+  .free-band li{padding:5px 0 5px 30px;position:relative;font-size:15px}
+  .free-band li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+  .free-band .free{color:var(--muted);font-size:14px;margin-top:20px}
+
+  /* Privacy strip */
+  .privacy{background:var(--teal);color:#EAF1F0;text-align:center}
+  .privacy h2{color:#fff}
+  .privacy .sub{color:#C5D6D4}
+
+  footer{background:var(--teal-fonce);color:#B9C9C7;text-align:center;padding:40px 0;font-size:13.5px}
+  footer a{color:var(--or-clair);text-decoration:none}
+  footer .disc{max-width:660px;margin:16px auto 0;font-size:12px;color:#8FA7A4;line-height:1.5}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="assets/icon.png" alt="Lifecoon">
+    <div class="brand">Lifecoon<small>par Bengacoon</small></div>
+    <nav>
+      <a href="#fonctions">Fonctions</a>
+      <a href="#gratuit">Gratuit</a>
+      <a href="#confidentialite">Confidentialité</a>
+      <a href="privacy.html">Mentions</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <div class="wrap">
+    <img class="logo" src="assets/icon.png" alt="Lifecoon">
+    <div class="par">par Bengacoon</div>
+    <h1>Lifecoon</h1>
+    <p class="lead">Votre carnet de santé de poche : suivez vos constantes et vos traitements, gardez vos ordonnances et vos documents à portée de main, et générez en un geste un <strong>rapport pour votre médecin</strong>.</p>
+    <div class="stores">
+      <a class="store" href="https://apps.apple.com/fr/app/id6785308739">
+        <span class="em"></span><span><small>Télécharger sur</small>App&nbsp;Store</span>
+      </a>
+      <a class="store" href="https://github.com/jdviallat/lifecoon-updates/releases/latest">
+        <span class="em">🤖</span><span><small>Android — APK direct</small>Télécharger</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<section id="fonctions">
+  <div class="wrap">
+    <div class="eyebrow">Ce que fait l'app</div>
+    <h2>Toute votre santé, au même endroit</h2>
+    <p class="sub">Pensée pour les patients chroniques, les seniors et les aidants — claire, lisible, sans compte ni jargon.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="em">❤️</span><h3>Constantes &amp; suivi</h3>
+        <p>Tension (avec pouls), glycémie, poids/IMC, SpO₂, température, fréquence cardiaque. Graphiques interactifs, tendances, moyennes matin/soir et HbA1c estimée.</p>
+      </div>
+      <div class="card">
+        <span class="em">💊</span><h3>Traitements &amp; rappels</h3>
+        <p>Médicaments, dosages et horaires précis, photo de la boîte. Rappels de prise, bouton « Pris ✓ », snooze et suivi d'observance sur 30 jours.</p>
+      </div>
+      <div class="card">
+        <span class="em">📋</span><h3>Ordonnances &amp; pharmacie</h3>
+        <p>Ordonnances renouvelables avec alerte d'expiration, appareils et consommables (stock, code-barres), liste de courses pharmacie et carnet de pharmacies.</p>
+      </div>
+      <div class="card">
+        <span class="em">📅</span><h3>Rendez-vous &amp; documents</h3>
+        <p>Rendez-vous médicaux avec rappels et synchro agenda, documents (photo ou PDF) avec <strong>OCR</strong> hors-ligne. Un bouton « Scanner » pré-remplit tout pour vous.</p>
+      </div>
+      <div class="card">
+        <span class="em">🚑</span><h3>Carte d'urgence</h3>
+        <p>Groupe sanguin, allergies, personne à prévenir et vos traitements en cours. Affichable en lecture seule <strong>depuis l'écran de verrouillage</strong>, sans ouvrir l'app.</p>
+      </div>
+      <div class="card">
+        <span class="em">📄</span><h3>Rapport pour le médecin</h3>
+        <p>Un PDF clair sur la période de votre choix : résumés, graphiques et relevés. Exports Excel et tableaux en grille, sauvegarde chiffrée de vos données.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gratuit" class="free-band">
+  <div class="wrap">
+    <div class="box">
+      <span class="price">100 % gratuit · sans abonnement</span>
+      <h2>Toutes les fonctions, offertes</h2>
+      <p class="sub" style="margin-bottom:6px">Aucun achat, aucune limite, aucune publicité.</p>
+      <ul>
+        <li>Toutes les mesures et tous les graphiques</li>
+        <li>Traitements, ordonnances, appareils et rendez-vous</li>
+        <li>Rapport médecin PDF, exports Excel et sauvegarde</li>
+        <li>Disponible en 9 langues, multi-profils (famille)</li>
+      </ul>
+      <p class="free">Lifecoon est financé par Bengacoon : votre santé n'est pas un produit.</p>
+    </div>
+  </div>
+</section>
+
+<section id="confidentialite" class="privacy">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--or-clair)">Vos données, chez vous</div>
+    <h2>Rien ne quitte votre téléphone</h2>
+    <p class="sub">Aucune donnée envoyée sur Internet, aucun compte à créer. Base chiffrée, verrouillage par code ou Face ID / empreinte, export et suppression totale quand vous le souhaitez.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>Lifecoon — Suivi Santé</strong> · par Bengacoon · Disponible en 9 langues<br>
+    <a href="privacy.html">Politique de confidentialité</a> &nbsp;·&nbsp; © 2026 Bengacoon
+    <p class="disc">Lifecoon est un carnet de santé personnel. Il n'établit aucun diagnostic, ne constitue pas un traitement et ne remplace pas l'avis d'un professionnel de santé. Les alertes reposent uniquement sur les seuils que vous définissez.</p>
+  </div>
+</footer>
+
+</body>
+</html>
