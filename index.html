@@ -77,6 +77,21 @@
   .free-band li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
   .free-band .free{color:var(--muted);font-size:14px;margin-top:20px}
 
+  /* Versions */
+  .vlist{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .vrow{background:#fff;border:1px solid var(--creme-2);border-radius:16px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start}
+  .vrow .v{flex:0 0 auto;min-width:118px;font-weight:800;color:var(--teal)}
+  .vrow .v small{display:block;font-weight:600;font-size:11.5px;color:var(--muted)}
+  .vrow p{color:var(--texte);font-size:14.5px}
+  .more{display:block;text-align:center;margin-top:26px;color:var(--teal);font-weight:700;text-decoration:none}
+
+  /* Download */
+  .download{background:var(--creme-2)}
+  .download .box{background:linear-gradient(160deg,var(--teal) 0%,var(--teal-fonce) 100%);color:#fff;border-radius:22px;padding:44px 34px;text-align:center;max-width:760px;margin:0 auto}
+  .download h2{color:#fff}
+  .download p{color:#EAF1F0;max-width:560px;margin:6px auto 0}
+  .download .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+
   /* Privacy strip */
   .privacy{background:var(--teal);color:#EAF1F0;text-align:center}
   .privacy h2{color:#fff}
@@ -95,7 +110,8 @@
     <div class="brand">Lifecoon<small>par Bengacoon</small></div>
     <nav>
       <a href="#fonctions">Fonctions</a>
-      <a href="#gratuit">Gratuit</a>
+      <a href="#versions">Nouveautés</a>
+      <a href="#telecharger">Télécharger</a>
       <a href="#confidentialite">Confidentialité</a>
       <a href="privacy.html">Mentions</a>
     </nav>
@@ -113,8 +129,11 @@
       <a class="store" href="https://apps.apple.com/fr/app/id6785308739">
         <span class="em"></span><span><small>Télécharger sur</small>App&nbsp;Store</span>
       </a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=com.lifecoon.sante">
+        <span class="em">▶</span><span><small>Disponible sur</small>Google&nbsp;Play</span>
+      </a>
       <a class="store" href="https://github.com/jdviallat/lifecoon-updates/releases/latest">
-        <span class="em">🤖</span><span><small>Android — APK direct</small>Télécharger</span>
+        <span class="em">⬇</span><span><small>Android</small>APK&nbsp;direct</span>
       </a>
     </div>
   </div>
@@ -148,7 +167,19 @@
       </div>
       <div class="card">
         <span class="em">📄</span><h3>Rapport pour le médecin</h3>
-        <p>Un PDF clair sur la période de votre choix : résumés, graphiques et relevés. Exports Excel et tableaux en grille, sauvegarde chiffrée de vos données.</p>
+        <p>Un PDF clair sur la période de votre choix : résumés, graphiques et relevés, valeurs hors seuils en surbrillance. Exports Excel et tableaux en grille, sauvegarde chiffrée.</p>
+      </div>
+      <div class="card">
+        <span class="em">🗓️</span><h3>Pilulier &amp; consultation</h3>
+        <p>Pilulier de la semaine imprimable (matin/midi/soir/coucher), et préparation de rendez-vous : vos questions + un récapitulatif PDF pour le médecin.</p>
+      </div>
+      <div class="card">
+        <span class="em">📈</span><h3>Analyses &amp; corrélations</h3>
+        <p>Mesures personnalisées, corrélations entre deux mesures, bilan mensuel « votre mois de santé », et import d'une analyse de labo par photo (OCR).</p>
+      </div>
+      <div class="card">
+        <span class="em">🔔</span><h3>Alertes &amp; accessibilité</h3>
+        <p>Alertes intelligentes sur vos tendances, doublons &amp; interactions de médicaments, suivi des effets secondaires, grand affichage et lecture vocale du jour.</p>
       </div>
     </div>
   </div>
@@ -171,6 +202,42 @@
   </div>
 </section>
 
+<section id="versions">
+  <div class="wrap">
+    <div class="eyebrow">Toujours en mouvement</div>
+    <h2>Les dernières versions</h2>
+    <p class="sub">Lifecoon évolue vite. Voici les nouveautés récentes — l'historique complet est sur GitHub.</p>
+    <div class="vlist">
+      <div class="vrow"><div class="v">2.1.0 <small>Alertes intelligentes</small></div><p>L'app surveille vos tendances et vous prévient : tension du matin en hausse, glycémie souvent au-dessus de la cible, variation de poids, baisse d'observance.</p></div>
+      <div class="vrow"><div class="v">2.0.0 <small>Accessibilité &amp; suivi</small></div><p>Grand affichage + contraste + lecture vocale du jour, bilan mensuel « votre mois de santé », préparation de consultation, import d'une analyse de labo par photo.</p></div>
+      <div class="vrow"><div class="v">1.9.0 <small>Pilulier &amp; analyses</small></div><p>Pilulier de la semaine imprimable, corrélations entre deux mesures, doublons &amp; interactions de médicaments, suivi des effets secondaires.</p></div>
+      <div class="vrow"><div class="v">1.8.0 <small>Médicaments avancés</small></div><p>Conditions de prise (à jeun, espacement, durée), détection des conflits d'horaire, mesures personnalisées, valeurs hors seuils en surbrillance dans le rapport.</p></div>
+      <div class="vrow"><div class="v">1.7.x <small>Ordonnances &amp; urgence</small></div><p>Ordonnances renouvelables, appareils &amp; consommables, liste de courses pharmacie, carte d'urgence affichable depuis l'écran de verrouillage.</p></div>
+    </div>
+    <a class="more" href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md">Voir tout l'historique des versions →</a>
+  </div>
+</section>
+
+<section id="telecharger" class="download">
+  <div class="wrap">
+    <div class="box">
+      <h2>Prêt à prendre votre santé en main ?</h2>
+      <p>Sur iPhone, Android via Google Play, ou en APK direct. Gratuit, sans compte, et vos données restent chez vous.</p>
+      <div class="btns">
+        <a class="store" href="https://apps.apple.com/fr/app/id6785308739">
+          <span class="em"></span><span><small>Télécharger sur</small>App&nbsp;Store</span>
+        </a>
+        <a class="store" href="https://play.google.com/store/apps/details?id=com.lifecoon.sante">
+          <span class="em">▶</span><span><small>Disponible sur</small>Google&nbsp;Play</span>
+        </a>
+        <a class="store" href="https://github.com/jdviallat/lifecoon-updates/releases/latest">
+          <span class="em">⬇</span><span><small>Android</small>APK&nbsp;direct</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="confidentialite" class="privacy">
   <div class="wrap">
     <div class="eyebrow" style="color:var(--or-clair)">Vos données, chez vous</div>
@@ -182,6 +249,7 @@
 <footer>
   <div class="wrap">
     <strong>Lifecoon — Suivi Santé</strong> · par Bengacoon · Disponible en 9 langues<br>
+    <a href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md">Versions</a> &nbsp;·&nbsp;
     <a href="privacy.html">Politique de confidentialité</a> &nbsp;·&nbsp; © 2026 Bengacoon
     <p class="disc">Lifecoon est un carnet de santé personnel. Il n'établit aucun diagnostic, ne constitue pas un traitement et ne remplace pas l'avis d'un professionnel de santé. Les alertes reposent uniquement sur les seuils que vous définissez.</p>
   </div>
