@@ -27,6 +27,9 @@
   header nav a{color:var(--muted);text-decoration:none}
   header nav a:hover,header nav a.active{color:var(--teal)}
   @media(max-width:640px){header nav{display:none}}
+  .langsel{margin-left:14px;background:#fff;border:1px solid var(--creme-2);color:var(--texte);
+    font-size:13px;font-weight:600;border-radius:9px;padding:6px 8px;cursor:pointer}
+  @media(max-width:640px){.langsel{margin-left:auto}}
 
   /* Hero */
   .hero{background:linear-gradient(160deg,var(--teal) 0%,var(--teal-fonce) 100%);color:#fff;text-align:center;padding:48px 0 52px;position:relative;overflow:hidden}
@@ -61,12 +64,13 @@
     <img src="assets/icon.png" alt="Lifecoon">
     <a class="brand" href="index.html">Lifecoon<small>par Bengacoon</small></a>
     <nav>
-      <a href="index.html#fonctions">Fonctions</a>
-      <a href="guide.html">Guide</a>
-      <a href="index.html#versions">Nouveautés</a>
-      <a href="index.html#telecharger">Télécharger</a>
-      <a href="privacy.html" class="active">Confidentialité</a>
+      <a href="index.html#fonctions" data-i18n="nav_features">Fonctions</a>
+      <a href="guide.html" data-i18n="nav_guide">Guide</a>
+      <a href="index.html#versions" data-i18n="nav_news">Nouveautés</a>
+      <a href="index.html#telecharger" data-i18n="nav_download">Télécharger</a>
+      <a href="privacy.html" class="active" data-i18n="nav_privacy">Confidentialité</a>
     </nav>
+    <select id="langSel" class="langsel" aria-label="Language"></select>
   </div>
 </header>
 
@@ -168,5 +172,6 @@
   </div>
 </footer>
 
+<script src="i18n.js" defer></script>
 </body>
 </html>

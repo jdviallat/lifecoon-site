@@ -76,7 +76,8 @@ window.LIFE_I18N = {
   "footer_guide": "Guide d'utilisation",
   "footer_versions": "Versions",
   "footer_privacy": "Politique de confidentialité",
-  "footer_disc": "Lifecoon est un carnet de santé personnel. Il n'établit aucun diagnostic, ne constitue pas un traitement et ne remplace pas l'avis d'un professionnel de santé. Les alertes reposent uniquement sur les seuils que vous définissez."
+  "footer_disc": "Lifecoon est un carnet de santé personnel. Il n'établit aucun diagnostic, ne constitue pas un traitement et ne remplace pas l'avis d'un professionnel de santé. Les alertes reposent uniquement sur les seuils que vous définissez.",
+  "footer_home": "Accueil"
  },
  "en": {
   "nav_features": "Features",
@@ -155,7 +156,8 @@ window.LIFE_I18N = {
   "footer_guide": "User guide",
   "footer_versions": "Versions",
   "footer_privacy": "Privacy policy",
-  "footer_disc": "Lifecoon is a personal health record. It makes no diagnosis, does not constitute treatment and does not replace the advice of a healthcare professional. Alerts rely solely on the thresholds you define."
+  "footer_disc": "Lifecoon is a personal health record. It makes no diagnosis, does not constitute treatment and does not replace the advice of a healthcare professional. Alerts rely solely on the thresholds you define.",
+  "footer_home": "Home"
  },
  "de": {
   "nav_features": "Funktionen",
@@ -234,7 +236,8 @@ window.LIFE_I18N = {
   "footer_guide": "Bedienungsanleitung",
   "footer_versions": "Versionen",
   "footer_privacy": "Datenschutzrichtlinie",
-  "footer_disc": "Lifecoon ist ein persönliches Gesundheitsheft. Es stellt keine Diagnose, ist keine Behandlung und ersetzt nicht den Rat einer medizinischen Fachkraft. Die Warnungen beruhen ausschließlich auf den von Ihnen festgelegten Grenzwerten."
+  "footer_disc": "Lifecoon ist ein persönliches Gesundheitsheft. Es stellt keine Diagnose, ist keine Behandlung und ersetzt nicht den Rat einer medizinischen Fachkraft. Die Warnungen beruhen ausschließlich auf den von Ihnen festgelegten Grenzwerten.",
+  "footer_home": "Startseite"
  },
  "it": {
   "nav_features": "Funzioni",
@@ -313,7 +316,8 @@ window.LIFE_I18N = {
   "footer_guide": "Guida all'uso",
   "footer_versions": "Versioni",
   "footer_privacy": "Informativa sulla riservatezza",
-  "footer_disc": "Lifecoon è un libretto sanitario personale. Non stabilisce alcuna diagnosi, non costituisce una terapia e non sostituisce il parere di un professionista sanitario. Gli avvisi si basano unicamente sulle soglie che voi definite."
+  "footer_disc": "Lifecoon è un libretto sanitario personale. Non stabilisce alcuna diagnosi, non costituisce una terapia e non sostituisce il parere di un professionista sanitario. Gli avvisi si basano unicamente sulle soglie che voi definite.",
+  "footer_home": "Home"
  },
  "pt": {
   "nav_features": "Funções",
@@ -392,7 +396,8 @@ window.LIFE_I18N = {
   "footer_guide": "Guia de utilização",
   "footer_versions": "Versões",
   "footer_privacy": "Política de privacidade",
-  "footer_disc": "O Lifecoon é um boletim de saúde pessoal. Não estabelece qualquer diagnóstico, não constitui um tratamento e não substitui o parecer de um profissional de saúde. Os alertas baseiam-se unicamente nos limites que definir."
+  "footer_disc": "O Lifecoon é um boletim de saúde pessoal. Não estabelece qualquer diagnóstico, não constitui um tratamento e não substitui o parecer de um profissional de saúde. Os alertas baseiam-se unicamente nos limites que definir.",
+  "footer_home": "Início"
  },
  "es": {
   "nav_features": "Funciones",
@@ -471,7 +476,8 @@ window.LIFE_I18N = {
   "footer_guide": "Guía de uso",
   "footer_versions": "Versiones",
   "footer_privacy": "Política de privacidad",
-  "footer_disc": "Lifecoon es una cartilla de salud personal. No establece ningún diagnóstico, no constituye un tratamiento y no sustituye la opinión de un profesional de la salud. Las alertas se basan únicamente en los umbrales que usted define."
+  "footer_disc": "Lifecoon es una cartilla de salud personal. No establece ningún diagnóstico, no constituye un tratamiento y no sustituye la opinión de un profesional de la salud. Las alertas se basan únicamente en los umbrales que usted define.",
+  "footer_home": "Inicio"
  },
  "sv": {
   "nav_features": "Funktioner",
@@ -550,7 +556,8 @@ window.LIFE_I18N = {
   "footer_guide": "Användarguide",
   "footer_versions": "Versioner",
   "footer_privacy": "Integritetspolicy",
-  "footer_disc": "Lifecoon är en personlig hälsojournal. Den ställer inga diagnoser, utgör ingen behandling och ersätter inte råd från vårdpersonal. Aviseringarna baseras enbart på de gränsvärden du själv anger."
+  "footer_disc": "Lifecoon är en personlig hälsojournal. Den ställer inga diagnoser, utgör ingen behandling och ersätter inte råd från vårdpersonal. Aviseringarna baseras enbart på de gränsvärden du själv anger.",
+  "footer_home": "Hem"
  },
  "nb": {
   "nav_features": "Funksjoner",
@@ -629,7 +636,8 @@ window.LIFE_I18N = {
   "footer_guide": "Bruksanvisning",
   "footer_versions": "Versjoner",
   "footer_privacy": "Personvernerklæring",
-  "footer_disc": "Lifecoon er en personlig helsedagbok. Den stiller ingen diagnose, utgjør ingen behandling og erstatter ikke rådene fra helsepersonell. Varslene baserer seg utelukkende på grenseverdiene du selv fastsetter."
+  "footer_disc": "Lifecoon er en personlig helsedagbok. Den stiller ingen diagnose, utgjør ingen behandling og erstatter ikke rådene fra helsepersonell. Varslene baserer seg utelukkende på grenseverdiene du selv fastsetter.",
+  "footer_home": "Hjem"
  },
  "fi": {
   "nav_features": "Toiminnot",
@@ -708,7 +716,8 @@ window.LIFE_I18N = {
   "footer_guide": "Käyttöopas",
   "footer_versions": "Versiot",
   "footer_privacy": "Tietosuojakäytäntö",
-  "footer_disc": "Lifecoon on henkilökohtainen terveystietokirja. Se ei tee diagnooseja, ei ole hoito eikä korvaa terveydenhuollon ammattilaisen arviota. Hälytykset perustuvat yksinomaan itse määrittämiisi raja-arvoihin."
+  "footer_disc": "Lifecoon on henkilökohtainen terveystietokirja. Se ei tee diagnooseja, ei ole hoito eikä korvaa terveydenhuollon ammattilaisen arviota. Hälytykset perustuvat yksinomaan itse määrittämiisi raja-arvoihin.",
+  "footer_home": "Etusivu"
  }
 };
 
