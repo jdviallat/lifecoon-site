@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lifecoon — Bedienungsanleitung: alles, was Sie tun können, und wie</title>
+<meta name="description" content="Vollständige Anleitung zu Lifecoon (von Bengacoon): Messungen, Behandlungen, Erinnerungen, Rezepte, Termine, Importe, Arztbericht, Sicherung. Was Sie tun können und wie Sie es tun, Schritt für Schritt.">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Lifecoon — Bedienungsanleitung">
+<meta property="og:description" content="Was Sie in Lifecoon tun können und wie Sie es tun, Schritt für Schritt.">
+<meta property="og:image" content="assets/icon.png">
+<style>
+  :root{
+    --teal:#457B7A; --teal-fonce:#2F5654; --or:#C98A4B; --or-clair:#E7C79B;
+    --creme:#F5F6F4; --creme-2:#E9ECE7; --texte:#243230; --muted:#63706C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--texte);background:var(--creme);line-height:1.65}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:rgba(245,246,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--creme-2)}
+  header .wrap{display:flex;align-items:center;gap:12px;height:64px}
+  header img{width:36px;height:36px;border-radius:9px}
+  header .brand{font-weight:800;font-size:19px;letter-spacing:.2px;text-decoration:none}
+  header .brand small{display:block;font-weight:600;font-size:11px;color:var(--muted);letter-spacing:.3px}
+  header nav{margin-left:auto;display:flex;gap:22px;font-size:14px;font-weight:600}
+  header nav a{color:var(--muted);text-decoration:none}
+  header nav a:hover,header nav a.active{color:var(--teal)}
+  @media(max-width:640px){header nav{display:none}}
+  .langsel{margin-left:14px;background:#fff;border:1px solid var(--creme-2);color:var(--texte);
+    font-size:13px;font-weight:600;border-radius:9px;padding:6px 8px;cursor:pointer}
+  @media(max-width:640px){.langsel{margin-left:auto}}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg,var(--teal) 0%,var(--teal-fonce) 100%);color:#fff;text-align:center;padding:56px 0 60px;position:relative;overflow:hidden}
+  .hero .blob{position:absolute;border-radius:50%;opacity:.09;background:var(--or-clair)}
+  .hero .b1{width:260px;height:260px;top:-70px;left:-50px}
+  .hero .b2{width:190px;height:190px;bottom:-60px;right:-40px}
+  .hero .par{color:var(--or-clair);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;position:relative}
+  .hero h1{font-size:40px;line-height:1.1;font-weight:800;letter-spacing:-.5px;position:relative}
+  .hero p.lead{max-width:640px;margin:16px auto 0;font-size:17px;color:#EAF1F0;position:relative}
+  @media(max-width:640px){.hero h1{font-size:30px}.hero p.lead{font-size:15px}}
+
+  /* Layout doc : sommaire + contenu */
+  .doc{display:grid;grid-template-columns:250px 1fr;gap:38px;padding:48px 0 20px;align-items:start}
+  @media(max-width:860px){.doc{grid-template-columns:1fr;gap:20px}}
+
+  .toc{position:sticky;top:84px;background:#fff;border:1px solid var(--creme-2);border-radius:16px;padding:18px 18px}
+  @media(max-width:860px){.toc{position:static}}
+  .toc h4{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--or);margin-bottom:12px}
+  .toc a{display:block;color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:6px 0;border-bottom:1px solid #f0f2ee}
+  .toc a:last-child{border-bottom:none}
+  .toc a:hover{color:var(--teal)}
+
+  /* Sections de doc */
+  .doc-body section{background:#fff;border:1px solid var(--creme-2);border-radius:18px;padding:30px 28px;margin-bottom:22px;scroll-margin-top:84px}
+  .doc-body h2{font-size:24px;font-weight:800;color:var(--teal-fonce);letter-spacing:-.3px;display:flex;align-items:center;gap:12px}
+  .doc-body h2 .em{font-size:26px}
+  .doc-body h3{font-size:17px;font-weight:800;color:var(--teal);margin:22px 0 6px}
+  .doc-body p{color:var(--texte);font-size:15.5px;margin:8px 0}
+  .doc-body p.intro{color:var(--muted);font-size:15.5px;margin-top:10px}
+  .doc-body ul.feat{list-style:none;margin:10px 0 4px}
+  .doc-body ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:15px}
+  .doc-body ul.feat li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+
+  /* "Comment faire" */
+  .how{background:var(--creme);border-radius:14px;padding:16px 18px;margin-top:16px;border:1px solid var(--creme-2)}
+  .how .lbl{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--or);margin-bottom:10px}
+  .how ol{margin:0 0 0 4px;padding-left:20px}
+  .how ol li{font-size:14.5px;margin:6px 0;padding-left:4px}
+  .how ol li strong{color:var(--teal-fonce)}
+  .path{display:inline-block;background:#fff;border:1px solid var(--creme-2);border-radius:7px;padding:1px 8px;font-size:13px;font-weight:700;color:var(--teal);white-space:nowrap}
+
+  .tip{margin-top:14px;background:#FBF3E7;border:1px solid var(--or-clair);border-radius:12px;padding:12px 16px;font-size:14px;color:#5c4a2c}
+  .tip strong{color:var(--or)}
+  .warn{margin-top:14px;background:#FCEDED;border:1px solid #EBC9C9;border-radius:12px;padding:12px 16px;font-size:14px;color:#7a3b3b}
+
+  .lede{font-size:16px;color:var(--muted);max-width:760px;margin:0 auto 8px;text-align:center}
+
+  footer{background:var(--teal-fonce);color:#B9C9C7;text-align:center;padding:40px 0;font-size:13.5px;margin-top:20px}
+  footer a{color:var(--or-clair);text-decoration:none}
+  footer .disc{max-width:660px;margin:16px auto 0;font-size:12px;color:#8FA7A4;line-height:1.5}
+
+  .backtop{display:block;text-align:center;margin:6px 0 30px;color:var(--teal);font-weight:700;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="assets/icon.png" alt="Lifecoon">
+    <a class="brand" href="index.html">Lifecoon<small>von Bengacoon</small></a>
+    <nav>
+      <a href="index.html#fonctions" data-i18n="nav_features">Funktionen</a>
+      <a href="guide.html" class="active" data-i18n="nav_guide">Anleitung</a>
+      <a href="index.html#versions" data-i18n="nav_news">Neuigkeiten</a>
+      <a href="index.html#telecharger" data-i18n="nav_download">Herunterladen</a>
+      <a href="privacy.html" data-i18n="nav_privacy">Datenschutz</a>
+    </nav>
+    <select id="langSel" class="langsel" aria-label="Language"></select>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <div class="wrap">
+    <div class="par">Bedienungsanleitung</div>
+    <h1>Alles, was Sie tun können</h1>
+    <p class="lead">Lifecoon bündelt Ihre gesamte Gesundheit an einem Ort. Diese Anleitung zeigt Ihnen, Funktion für Funktion, <strong>was die App kann</strong> und <strong>wie Sie es tun</strong>, Schritt für Schritt.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="doc">
+
+    <!-- SOMMAIRE -->
+    <aside class="toc">
+      <h4>Inhalt</h4>
+      <a href="#demarrer">1 · Erste Schritte</a>
+      <a href="#accueil">2 · Das Dashboard</a>
+      <a href="#mesures">3 · Messungen &amp; Verlauf</a>
+      <a href="#traitements">4 · Behandlungen &amp; Erinnerungen</a>
+      <a href="#medical">5 · Tab Medizinisch</a>
+      <a href="#imports">6 · Automatische Importe</a>
+      <a href="#dossier">7 · Tab Akte &amp; Bericht</a>
+      <a href="#analyses">8 · Erweiterte Auswertungen</a>
+      <a href="#alertes">9 · Warnungen &amp; Barrierefreiheit</a>
+      <a href="#sauvegarde">10 · Sicherung &amp; Ihre Daten</a>
+      <a href="#confidentialite">11 · Datenschutz</a>
+      <a href="#faq">12 · Häufige Fragen</a>
+    </aside>
+
+    <!-- CONTENU -->
+    <div class="doc-body">
+
+      <p class="lede">Tipp: Lifecoon ist in 5 Bereiche am unteren Bildschirmrand gegliedert — <strong>Startseite</strong>, <strong>Verlauf</strong>, <strong>Behandlungen</strong>, <strong>Medizinisch</strong> und <strong>Akte</strong> — plus das Zahnrad <strong>⚙️ Einstellungen</strong> oben. Von hier aus geht alles los.</p>
+      <br>
+
+      <!-- 1 -->
+      <section id="demarrer">
+        <h2><span class="em">🚀</span> 1 · Erste Schritte</h2>
+        <p class="intro">Beim ersten Öffnen führt Sie Lifecoon durch einige Bildschirme: Vorstellung, Einwilligung und dann Schutz der App. Kein Konto, keine Anmeldung, keine E-Mail-Adresse.</p>
+
+        <h3>Die App schützen</h3>
+        <p>Sie können Lifecoon per <strong>PIN-Code</strong> und/oder <strong>Face ID / Fingerabdruck</strong> sperren. Die App sperrt sich automatisch wieder, sobald sie in den Hintergrund wechselt.</p>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Wählen Sie beim ersten Start einen <strong>4- bis 8-stelligen Code</strong> und aktivieren Sie bei Bedarf die Biometrie.</li>
+            <li>Zum späteren Ändern: <span class="path">⚙️ Einstellungen › Sicherheit</span> — PIN festlegen/entfernen, Face ID / Fingerabdruck aktivieren.</li>
+          </ol>
+        </div>
+
+        <h3>Ihr Profil ausfüllen</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Öffnen Sie <span class="path">⚙️ Einstellungen › Profil</span>.</li>
+            <li>Geben Sie Ihren <strong>Namen, Ihre Größe, Ihr Geburtsdatum</strong> und bei Bedarf ein Foto ein (es erscheint auf der Startseite).</li>
+            <li>Die Größe dient zur automatischen Berechnung des <strong>BMI</strong>, wenn Sie sich wiegen.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Familie:</strong> Sie können mehrere Personen über die <em>Profile</em> verfolgen (<span class="path">⚙️ Einstellungen › Profile</span>). Jedes Profil hat eigene Messungen, Behandlungen und Termine.</div>
+      </section>
+
+      <!-- 2 -->
+      <section id="accueil">
+        <h2><span class="em">🏠</span> 2 · Das Dashboard</h2>
+        <p class="intro">Der Bildschirm <strong>Startseite</strong> ist Ihre Zusammenfassung des Tages: letzte Werte, nächster Termin, einzunehmende Medikamente, Trends und Warnhinweise.</p>
+        <ul class="feat">
+          <li>Karten Ihrer letzten Messungen mit Farbkodierung (nach Ihren Schwellenwerten)</li>
+          <li>Warnbanner, wenn ein Trend Aufmerksamkeit verdient</li>
+          <li>Nächster Termin und Einnahmen des Tages</li>
+          <li>Tipp des Tages und Schaltfläche „Meinen Tag vorlesen" (gesprochene Zusammenfassung)</li>
+        </ul>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tippen Sie auf eine Karte (Blutdruck, Blutzucker, Gewicht …), um direkt deren <strong>detaillierten Verlauf</strong> zu öffnen.</li>
+            <li>Tippen Sie auf die Schaltfläche <strong>„+ Messung hinzufügen"</strong>, um einen Wert einzugeben, ohne den Bildschirm zu wechseln.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section id="mesures">
+        <h2><span class="em">❤️</span> 3 · Messungen &amp; Verlauf</h2>
+        <p class="intro">Verfolgen Sie Blutdruck (mit Puls), Blutzucker, Gewicht/BMI, SpO₂, Temperatur, Herzfrequenz — und erstellen Sie eigene Messungen. Jeder Verlauf hat seine Kurve und seinen Verlauf.</p>
+
+        <h3>Eine Messung erfassen</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Von der <strong>Startseite</strong> („+ Messung hinzufügen") oder dem Tab <span class="path">Verlauf</span>.</li>
+            <li>Wählen Sie den Typ (Blutdruck / Blutzucker / Gewicht …), geben Sie den Wert ein — oder nutzen Sie die <strong>Spracheingabe</strong>.</li>
+            <li>Geben Sie beim Blutzucker den <strong>Zeitpunkt</strong> an (nüchtern, vor/nach der Mahlzeit, vor dem Schlafengehen); beim Blutdruck erfasst die App auch den <strong>Puls</strong>.</li>
+            <li>Speichern: Der Wert erscheint sofort in der Kurve.</li>
+          </ol>
+        </div>
+
+        <h3>Verlauf ansehen und korrigieren</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tab <span class="path">Verlauf</span> › wählen Sie die Messung.</li>
+            <li>Fahren Sie über das Diagramm, um jeden Punkt zu sehen; wechseln Sie den Zeitraum <strong>7 / 30 / 90 Tage</strong>.</li>
+            <li>Tippen Sie in der Liste darunter auf eine Zeile, um sie zu <strong>bearbeiten</strong> oder zu löschen.</li>
+          </ol>
+        </div>
+
+        <h3>Warnschwellen anpassen</h3>
+        <p>Die Farben (normal / zu beobachten / erhöht) beruhen auf <strong>Ihren</strong> Schwellenwerten, nicht auf einer Diagnose.</p>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li><span class="path">⚙️ Einstellungen › Schwellenwerte</span>.</li>
+            <li>Passen Sie die oberen Werte für Blutdruck, Nüchtern- und postprandialen Blutzucker sowie die Blutzuckereinheit (g/L, mmol/L oder mg/dL) an.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section id="traitements">
+        <h2><span class="em">💊</span> 4 · Behandlungen &amp; Erinnerungen</h2>
+        <p class="intro">Verwalten Sie Ihre Medikamente, deren Zeiten und Einnahmebedingungen, erhalten Sie Erinnerungen und verfolgen Sie Ihre Therapietreue.</p>
+
+        <h3>Ein Medikament hinzufügen</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tab <span class="path">Behandlungen</span> › <strong>„+"</strong>.</li>
+            <li>Geben Sie den Namen, die Dosierung, die <strong>Einnahmezeiten</strong> und bei Bedarf ein Foto der Packung ein.</li>
+            <li>Öffnen Sie <strong>„Einnahmebedingungen"</strong>, um festzulegen: Dauer der Kur, „nüchtern" davor/danach, Abstand zu anderen Medikamenten, Anweisungen.</li>
+            <li>Fügen Sie den <strong>Wirkstoff (INN)</strong> hinzu, damit die App Doppelungen und Wechselwirkungen erkennt.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Erinnerungen:</strong> erlauben Sie die Benachrichtigungen bei der ersten Anfrage. Die App erinnert Sie zur gewählten Uhrzeit, <strong>auch ohne Verbindung</strong>, und zeigt gegebenenfalls den Hinweis „nüchtern" an.</div>
+
+        <h3>Eine Einnahme markieren &amp; die Therapietreue verfolgen</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Haken Sie auf der <strong>Startseite</strong> oder unter <span class="path">Behandlungen</span> jede Einnahme <strong>Eingenommen ✓ / Vergessen</strong> ab.</li>
+            <li>Die Karte <strong>„Therapietreue über 30 Tage"</strong> zeigt Ihren Prozentsatz und die Auslassungen.</li>
+          </ol>
+        </div>
+
+        <h3>Nebenwirkungen &amp; Wechselwirkungen</h3>
+        <ul class="feat">
+          <li>Notieren Sie eine Nebenwirkung pro Medikament (leicht / mäßig / stark + Notiz) — wird in den Bericht übernommen.</li>
+          <li>Die App weist auf <strong>Wirkstoff-Doppelungen</strong> und <strong>Zeitkonflikte</strong> hin (nicht blockierende Warnungen; mit Ihrem Arzt zu besprechen).</li>
+        </ul>
+      </section>
+
+      <!-- 5 -->
+      <section id="medical">
+        <h2><span class="em">📅</span> 5 · Tab Medizinisch</h2>
+        <p class="intro">Seit Version 2.4.0 bündelt der Tab <strong>Medizinisch</strong> alles, was Ihre Behandelnden und Ihre Termine betrifft: Termine, Ärzte, Apotheken und Untersuchungen.</p>
+
+        <h3>Termine</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tab <span class="path">Medizinisch › Termine</span> › <strong>„+"</strong>.</li>
+            <li>Geben Sie Grund, Datum, Ort, Behandler:in und eine <strong>Erinnerung</strong> ein.</li>
+            <li>Option: Synchronisieren mit Ihrem <strong>Kalender</strong> (Kalender des Telefons oder in den Einstellungen konfiguriertes CalDAV-Konto).</li>
+          </ol>
+        </div>
+
+        <h3>Meine Ärzte &amp; Apotheken</h3>
+        <ul class="feat">
+          <li>Ärzteverzeichnis: Telefon und Adresse <strong>anklickbar</strong>, mit Ihren Terminen verknüpft.</li>
+          <li>Apothekenverzeichnis + <strong>Apotheken-Einkaufsliste</strong> (abzuholende Medikamente, nachzukaufende Verbrauchsmaterialien), teilbar.</li>
+        </ul>
+
+        <h3>Rezepte &amp; Untersuchungen</h3>
+        <ul class="feat">
+          <li>Wiederholbare Rezepte: Gültigkeit, Fotos, verknüpfte Medikamente, <strong>Ablaufwarnung</strong>.</li>
+          <li>Erinnerungen an nicht zu vergessende Untersuchungen.</li>
+        </ul>
+      </section>
+
+      <!-- 6 -->
+      <section id="imports">
+        <h2><span class="em">📥</span> 6 · Automatische Importe</h2>
+        <p class="intro">Lifecoon kann Ihre Daten für Sie ausfüllen — aus einem Rezept, einem Befund oder einem verbundenen Gerät. Alles geschieht <strong>auf dem Gerät</strong>, offline.</p>
+
+        <h3>Ein Rezept importieren (PDF oder Foto)</h3>
+        <p>Die App liest das Rezept und schlägt Ihnen vor, die <strong>Medikamente und ihre Dosierung</strong> automatisch anzulegen.</p>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tab <span class="path">Behandlungen</span> oder Schaltfläche <strong>„Scannen"</strong> › wählen Sie „Rezept".</li>
+            <li>Machen Sie ein Foto oder wählen Sie ein PDF aus.</li>
+            <li>Überprüfen Sie die vorgeschlagenen Medikamente und Zeiten, <strong>korrigieren Sie bei Bedarf</strong> und bestätigen Sie.</li>
+          </ol>
+        </div>
+        <div class="warn">Überprüfen Sie stets, was erkannt wurde, bevor Sie bestätigen: Die automatische Erkennung kann sich irren. Sie ersetzt nicht das Rezept Ihres Arztes.</div>
+
+        <h3>Eine Untersuchung oder einen Laborbefund importieren</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tab <span class="path">Verlauf › Import</span> (oder über „Eigene Messungen").</li>
+            <li>Wählen Sie einen <strong>PDF</strong>-Bericht oder ein <strong>Foto</strong>; die App extrahiert die Werte.</li>
+            <li>Ordnen Sie jeden Wert einer Messung zu (Blutzucker, Gewicht oder eine eigene Messung), wählen Sie das Datum und bestätigen Sie.</li>
+          </ol>
+        </div>
+
+        <h3>Verbundene Bluetooth-Geräte</h3>
+        <p>Importieren Sie automatisch von einem kompatiblen <strong>Blutdruckmessgerät, Blutzuckermessgerät oder einer Waage</strong> (Standard-Bluetooth-Profile).</p>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tab <span class="path">Verlauf › Verbundene Geräte</span>.</li>
+            <li>Erlauben Sie Bluetooth, starten Sie die Suche, wählen Sie Ihr Gerät aus und übernehmen Sie die Messung.</li>
+          </ol>
+        </div>
+
+        <h3>Apple Health / Health Connect</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li><span class="path">⚙️ Einstellungen › Health Connect</span> (Android) oder <span class="path">Apple Health</span> (iOS).</li>
+            <li>Erlauben Sie den Lesezugriff; der Import (Gewicht) erfolgt schreibgeschützt und lokal.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section id="dossier">
+        <h2><span class="em">📄</span> 7 · Tab Akte &amp; Arztbericht</h2>
+        <p class="intro">Der Tab <strong>Akte</strong> vereint alles, was Sie teilen oder sicher aufbewahren: den Bericht für den Arzt, den Notfallausweis, die Impfungen, die Dokumente und die monatliche Bilanz.</p>
+
+        <h3>Den Bericht für Ihren Arzt erstellen</h3>
+        <p>Das ist die Kernfunktion: ein <strong>übersichtliches PDF</strong> über den Zeitraum Ihrer Wahl, mit Zusammenfassungen, Diagrammen und Auflistungen, Werte außerhalb der Schwellen hervorgehoben.</p>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tab <span class="path">Akte › Bericht</span>.</li>
+            <li>Wählen Sie den <strong>Zeitraum</strong> (7 T., 30 T., 3 Monate, 12 Monate, alles).</li>
+            <li>Erstellen und dann <strong>teilen</strong> Sie das PDF (E-Mail, Druck, Messenger …). Sie können auch nach <strong>Excel</strong> oder als <strong>Rastertabellen</strong> (im Heftstil) exportieren.</li>
+          </ol>
+        </div>
+
+        <h3>Notfallausweis</h3>
+        <p>Blutgruppe, Allergien, zu benachrichtigende Person und laufende Behandlungen — nützlich für die Rettungskräfte.</p>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tab <span class="path">Akte › Notfallausweis</span>; geben Sie Ihre Informationen ein.</li>
+            <li>Aktivieren Sie <strong>„Ohne Entsperren anzeigen"</strong>, damit auf dem Sperrbildschirm eine Schaltfläche erscheint (schreibgeschützt).</li>
+          </ol>
+        </div>
+
+        <h3>Impfungen, Dokumente &amp; monatliche Bilanz</h3>
+        <ul class="feat">
+          <li><strong>Impfpass</strong> mit Erinnerungen, übernommen in den Notfallausweis und den Bericht.</li>
+          <li><strong>Dokumente</strong> (Foto oder PDF) mit Offline-OCR, um den Text wiederzufinden.</li>
+          <li><strong>Monatliche Bilanz</strong> „Ihr Gesundheitsmonat": Durchschnittswerte, Trends, Therapietreue, mit PDF-Export und Erinnerung am 1. des Monats.</li>
+          <li><strong>Krankenhaus-Überleitungsbogen</strong> als PDF (Identität, Allergien, Behandlungen, Impfungen, Werte, Ärzte).</li>
+        </ul>
+      </section>
+
+      <!-- 8 -->
+      <section id="analyses">
+        <h2><span class="em">📈</span> 8 · Erweiterte Auswertungen</h2>
+
+        <h3>Eigene Messungen</h3>
+        <p>Erstellen Sie eigene Verläufe (Peak-Flow, ein Laborwert …) mit Einheit, Dezimalstellen und Schwellenwerten.</p>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li><span class="path">⚙️ Einstellungen › Eigene Messungen</span> › erstellen Sie einen Typ (Name, Einheit, Schwellenwerte).</li>
+            <li>Er erscheint anschließend im Tab <span class="path">Verlauf</span> mit seiner Kurve und seinem Verlauf.</li>
+          </ol>
+        </div>
+
+        <h3>Schmerzverlauf</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li>Tab <span class="path">Verlauf › Schmerz</span>.</li>
+            <li>Tippen Sie auf die betroffene <strong>Körperregion</strong>, stellen Sie die <strong>Intensität (0–10)</strong> ein und fügen Sie eine Notiz hinzu. Der Trend wird in den Bericht übernommen.</li>
+          </ol>
+        </div>
+
+        <h3>Korrelationen &amp; druckbare Pillenbox</h3>
+        <ul class="feat">
+          <li><strong>Korrelationen:</strong> überlagern Sie zwei Messungen und erkennen Sie Zusammenhänge (mit Markierungen für Behandlungsbeginn/-ende).</li>
+          <li><strong>Wochen-Pillenbox:</strong> ein Raster Zeitpunkte × 7 Tage, als PDF im Querformat zum Ausdrucken exportierbar.</li>
+          <li><strong>Vorbereitung des Arztbesuchs:</strong> notieren Sie Ihre Fragen und eine Zusammenfassung zum Mitnehmen (PDF).</li>
+        </ul>
+      </section>
+
+      <!-- 9 -->
+      <section id="alertes">
+        <h2><span class="em">🔔</span> 9 · Warnungen &amp; Barrierefreiheit</h2>
+
+        <h3>Intelligente Warnungen</h3>
+        <p>Die App überwacht Ihre Trends und weist Sie zur Orientierung darauf hin: steigender Morgenblutdruck, häufig über dem Zielwert liegender Blutzucker, Gewichtsschwankung, nachlassende Therapietreue.</p>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li><span class="path">⚙️ Einstellungen › Intelligente Warnungen</span> zum Aktivieren/Deaktivieren.</li>
+          </ol>
+        </div>
+
+        <h3>Lesekomfort (Senioren)</h3>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li><span class="path">⚙️ Einstellungen › Anzeige</span>: aktivieren Sie <strong>„Große Anzeige"</strong> (größere Texte und Schaltflächen) und <strong>„Hoher Kontrast"</strong>.</li>
+            <li>Ändern Sie die <strong>Sprache</strong> unter 9 verfügbaren in <span class="path">⚙️ Einstellungen › Sprache</span>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section id="sauvegarde">
+        <h2><span class="em">💾</span> 10 · Sicherung &amp; Ihre Daten nie verlieren</h2>
+        <p class="intro">Ihre Daten verlassen das Gerät nicht: Es liegt also an Ihnen, eine Kopie zu behalten. Lifecoon macht das einfach und automatisch.</p>
+        <div class="how">
+          <div class="lbl">So geht's</div>
+          <ol>
+            <li><strong>Manuelle Sicherung:</strong> <span class="path">⚙️ Einstellungen › Sicherung › Exportieren</span> erstellt eine <strong>verschlüsselte Datei (.lifecoon)</strong>, die Sie aufbewahren, wo Sie möchten.</li>
+            <li><strong>Automatische Sicherung:</strong> wählen Sie einen <strong>Ordner</strong> (z. B. iCloud Drive / Dateien); dort wird regelmäßig eine verschlüsselte Kopie geschrieben — sie <strong>übersteht eine Deinstallation</strong>.</li>
+            <li><strong>Wiederherstellen:</strong> <span class="path">⚙️ Einstellungen › Sicherung › Importieren</span> und wählen Sie Ihre .lifecoon-Datei aus.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Telefonwechsel:</strong> exportieren Sie eine Sicherung auf dem alten Gerät, installieren Sie Lifecoon auf dem neuen und importieren Sie dann die Datei. App-Updates <strong>bewahren</strong> Ihre Daten.</div>
+      </section>
+
+      <!-- 11 -->
+      <section id="confidentialite">
+        <h2><span class="em">🔒</span> 11 · Datenschutz &amp; Sicherheit</h2>
+        <ul class="feat">
+          <li>Keine Daten werden ins Internet gesendet, kein Konto, keine Werbung, keine Tracker.</li>
+          <li><strong>Verschlüsselte</strong> Datenbank auf dem Gerät, Sperre per PIN und Biometrie.</li>
+          <li>Sie können jederzeit <strong>alles löschen</strong> (<span class="path">⚙️ Einstellungen › Daten › Löschen</span>).</li>
+          <li>Die Prüfung auf Updates übermittelt <strong>keine</strong> persönlichen Daten.</li>
+        </ul>
+        <p style="margin-top:10px">Alle Details in der <a href="privacy.html" style="color:var(--teal);font-weight:700">Datenschutzerklärung</a>.</p>
+      </section>
+
+      <!-- 12 -->
+      <section id="faq">
+        <h2><span class="em">❓</span> 12 · Häufige Fragen</h2>
+        <h3>Ersetzt die App einen Arzt?</h3>
+        <p>Nein. Lifecoon ist ein Verlaufsheft. Sie stellt keine Diagnose und ersetzt keine ärztliche Beratung. Die Warnungen beruhen ausschließlich auf den von Ihnen festgelegten Schwellenwerten.</p>
+        <h3>Ist es wirklich kostenlos?</h3>
+        <p>Ja, vollständig: keine kostenpflichtige Funktion, kein Abonnement, kein In-App-Kauf.</p>
+        <h3>Sind meine Daten in der Cloud?</h3>
+        <p>Nein. Alles bleibt verschlüsselt auf Ihrem Gerät. Die Sicherungen, die Sie erstellen, gehen dorthin, wohin Sie es wählen.</p>
+        <h3>Wie erhalte ich die Neuigkeiten?</h3>
+        <p>Auf dem iPhone über den App Store. Auf Android über Google Play oder die direkte APK: Die App benachrichtigt Sie automatisch, wenn eine neue Version verfügbar ist.</p>
+      </section>
+
+      <a class="backtop" href="#">↑ Nach oben</a>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>Lifecoon — Gesundheitstagebuch</strong> · von Bengacoon · Verfügbar in 9 Sprachen<br>
+    <a href="index.html" data-i18n="footer_home">Startseite</a> &nbsp;·&nbsp;
+    <a href="guide.html" data-i18n="footer_guide">Anleitung</a> &nbsp;·&nbsp;
+    <a href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md" data-i18n="footer_versions">Versionen</a> &nbsp;·&nbsp;
+    <a href="privacy.html" data-i18n="footer_privacy">Datenschutzerklärung</a> &nbsp;·&nbsp; © 2026 Bengacoon
+    <p class="disc">Lifecoon ist ein persönliches Gesundheitstagebuch. Es stellt keine Diagnose, ist keine Behandlung und ersetzt nicht den Rat einer medizinischen Fachkraft. Die Warnungen beruhen ausschließlich auf den von Ihnen festgelegten Schwellenwerten.</p>
+  </div>
+</footer>
+
+<script>
+/* Sélecteur de langue : navigue entre les variantes traduites de cette page. */
+(function(){
+  var LANGS={fr:'Français',en:'English',de:'Deutsch',it:'Italiano',pt:'Português',es:'Español',sv:'Svenska',nb:'Norsk',fi:'Suomi'};
+  var BASE='guide';
+  function fileFor(l){ return l==='fr' ? BASE+'.html' : BASE+'-'+l+'.html'; }
+  var m=location.pathname.match(/guide(?:-([a-z]{2}))?\.html/);
+  var cur=(m&&m[1])||'fr';
+  // Respecter le choix mémorisé sur l'accueil (redirige une seule fois vers la bonne variante).
+  try{ var st=localStorage.getItem('lifecoon_lang'); if(st&&st!==cur&&LANGS[st]){ location.replace(fileFor(st)); return; } }catch(e){}
+  document.addEventListener('DOMContentLoaded',function(){
+    var sel=document.getElementById('langSel'); if(!sel) return;
+    Object.keys(LANGS).forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=LANGS[c];if(c===cur)o.selected=true;sel.appendChild(o);});
+    sel.addEventListener('change',function(){ try{localStorage.setItem('lifecoon_lang',sel.value);}catch(e){} location.href=fileFor(sel.value); });
+  });
+})();
+</script>
+</body>
+</html>

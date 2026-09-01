@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lifecoon — Käyttöopas: kaikki mitä voit tehdä ja miten</title>
+<meta name="description" content="Lifecoonin (Bengacoonin) täydellinen opas: mittaukset, hoidot, muistutukset, reseptit, ajanvaraukset, tuonnit, lääkäriraportti, varmuuskopio. Mitä voit tehdä ja miten se tehdään, vaihe vaiheelta.">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Lifecoon — Käyttöopas">
+<meta property="og:description" content="Mitä voit tehdä Lifecoonissa ja miten se tehdään, vaihe vaiheelta.">
+<meta property="og:image" content="assets/icon.png">
+<style>
+  :root{
+    --teal:#457B7A; --teal-fonce:#2F5654; --or:#C98A4B; --or-clair:#E7C79B;
+    --creme:#F5F6F4; --creme-2:#E9ECE7; --texte:#243230; --muted:#63706C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--texte);background:var(--creme);line-height:1.65}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:rgba(245,246,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--creme-2)}
+  header .wrap{display:flex;align-items:center;gap:12px;height:64px}
+  header img{width:36px;height:36px;border-radius:9px}
+  header .brand{font-weight:800;font-size:19px;letter-spacing:.2px;text-decoration:none}
+  header .brand small{display:block;font-weight:600;font-size:11px;color:var(--muted);letter-spacing:.3px}
+  header nav{margin-left:auto;display:flex;gap:22px;font-size:14px;font-weight:600}
+  header nav a{color:var(--muted);text-decoration:none}
+  header nav a:hover,header nav a.active{color:var(--teal)}
+  @media(max-width:640px){header nav{display:none}}
+  .langsel{margin-left:14px;background:#fff;border:1px solid var(--creme-2);color:var(--texte);
+    font-size:13px;font-weight:600;border-radius:9px;padding:6px 8px;cursor:pointer}
+  @media(max-width:640px){.langsel{margin-left:auto}}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg,var(--teal) 0%,var(--teal-fonce) 100%);color:#fff;text-align:center;padding:56px 0 60px;position:relative;overflow:hidden}
+  .hero .blob{position:absolute;border-radius:50%;opacity:.09;background:var(--or-clair)}
+  .hero .b1{width:260px;height:260px;top:-70px;left:-50px}
+  .hero .b2{width:190px;height:190px;bottom:-60px;right:-40px}
+  .hero .par{color:var(--or-clair);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;position:relative}
+  .hero h1{font-size:40px;line-height:1.1;font-weight:800;letter-spacing:-.5px;position:relative}
+  .hero p.lead{max-width:640px;margin:16px auto 0;font-size:17px;color:#EAF1F0;position:relative}
+  @media(max-width:640px){.hero h1{font-size:30px}.hero p.lead{font-size:15px}}
+
+  /* Layout doc : sommaire + contenu */
+  .doc{display:grid;grid-template-columns:250px 1fr;gap:38px;padding:48px 0 20px;align-items:start}
+  @media(max-width:860px){.doc{grid-template-columns:1fr;gap:20px}}
+
+  .toc{position:sticky;top:84px;background:#fff;border:1px solid var(--creme-2);border-radius:16px;padding:18px 18px}
+  @media(max-width:860px){.toc{position:static}}
+  .toc h4{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--or);margin-bottom:12px}
+  .toc a{display:block;color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:6px 0;border-bottom:1px solid #f0f2ee}
+  .toc a:last-child{border-bottom:none}
+  .toc a:hover{color:var(--teal)}
+
+  /* Sections de doc */
+  .doc-body section{background:#fff;border:1px solid var(--creme-2);border-radius:18px;padding:30px 28px;margin-bottom:22px;scroll-margin-top:84px}
+  .doc-body h2{font-size:24px;font-weight:800;color:var(--teal-fonce);letter-spacing:-.3px;display:flex;align-items:center;gap:12px}
+  .doc-body h2 .em{font-size:26px}
+  .doc-body h3{font-size:17px;font-weight:800;color:var(--teal);margin:22px 0 6px}
+  .doc-body p{color:var(--texte);font-size:15.5px;margin:8px 0}
+  .doc-body p.intro{color:var(--muted);font-size:15.5px;margin-top:10px}
+  .doc-body ul.feat{list-style:none;margin:10px 0 4px}
+  .doc-body ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:15px}
+  .doc-body ul.feat li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+
+  /* "Comment faire" */
+  .how{background:var(--creme);border-radius:14px;padding:16px 18px;margin-top:16px;border:1px solid var(--creme-2)}
+  .how .lbl{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--or);margin-bottom:10px}
+  .how ol{margin:0 0 0 4px;padding-left:20px}
+  .how ol li{font-size:14.5px;margin:6px 0;padding-left:4px}
+  .how ol li strong{color:var(--teal-fonce)}
+  .path{display:inline-block;background:#fff;border:1px solid var(--creme-2);border-radius:7px;padding:1px 8px;font-size:13px;font-weight:700;color:var(--teal);white-space:nowrap}
+
+  .tip{margin-top:14px;background:#FBF3E7;border:1px solid var(--or-clair);border-radius:12px;padding:12px 16px;font-size:14px;color:#5c4a2c}
+  .tip strong{color:var(--or)}
+  .warn{margin-top:14px;background:#FCEDED;border:1px solid #EBC9C9;border-radius:12px;padding:12px 16px;font-size:14px;color:#7a3b3b}
+
+  .lede{font-size:16px;color:var(--muted);max-width:760px;margin:0 auto 8px;text-align:center}
+
+  footer{background:var(--teal-fonce);color:#B9C9C7;text-align:center;padding:40px 0;font-size:13.5px;margin-top:20px}
+  footer a{color:var(--or-clair);text-decoration:none}
+  footer .disc{max-width:660px;margin:16px auto 0;font-size:12px;color:#8FA7A4;line-height:1.5}
+
+  .backtop{display:block;text-align:center;margin:6px 0 30px;color:var(--teal);font-weight:700;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="assets/icon.png" alt="Lifecoon">
+    <a class="brand" href="index.html">Lifecoon<small>Bengacoon</small></a>
+    <nav>
+      <a href="index.html#fonctions" data-i18n="nav_features">Toiminnot</a>
+      <a href="guide.html" class="active" data-i18n="nav_guide">Opas</a>
+      <a href="index.html#versions" data-i18n="nav_news">Uutuudet</a>
+      <a href="index.html#telecharger" data-i18n="nav_download">Lataa</a>
+      <a href="privacy.html" data-i18n="nav_privacy">Tietosuoja</a>
+    </nav>
+    <select id="langSel" class="langsel" aria-label="Language"></select>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <div class="wrap">
+    <div class="par">Käyttöopas</div>
+    <h1>Kaikki mitä voit tehdä</h1>
+    <p class="lead">Lifecoon kokoaa koko terveytesi samaan paikkaan. Tämä opas näyttää sinulle toiminto toiminnolta, <strong>mitä sovellus osaa tehdä</strong> ja <strong>miten se tehdään</strong>, vaihe vaiheelta.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="doc">
+
+    <!-- SOMMAIRE -->
+    <aside class="toc">
+      <h4>Sisällys</h4>
+      <a href="#demarrer">1 · Ensiaskeleet</a>
+      <a href="#accueil">2 · Kojelauta</a>
+      <a href="#mesures">3 · Mittaukset &amp; seuranta</a>
+      <a href="#traitements">4 · Hoidot &amp; muistutukset</a>
+      <a href="#medical">5 · Lääketiede-välilehti</a>
+      <a href="#imports">6 · Automaattiset tuonnit</a>
+      <a href="#dossier">7 · Kansio-välilehti &amp; raportti</a>
+      <a href="#analyses">8 · Kehittyneet analyysit</a>
+      <a href="#alertes">9 · Hälytykset &amp; saavutettavuus</a>
+      <a href="#sauvegarde">10 · Varmuuskopiointi &amp; tietosi</a>
+      <a href="#confidentialite">11 · Tietosuoja</a>
+      <a href="#faq">12 · Usein kysytyt kysymykset</a>
+    </aside>
+
+    <!-- CONTENU -->
+    <div class="doc-body">
+
+      <p class="lede">Vinkki: Lifecoon jakautuu 5 tilaan näytön alareunassa — <strong>Etusivu</strong>, <strong>Seuranta</strong>, <strong>Hoidot</strong>, <strong>Lääketiede</strong> ja <strong>Kansio</strong> — sekä ratas <strong>⚙️ Asetukset</strong> yläreunassa. Kaikki lähtee sieltä.</p>
+      <br>
+
+      <!-- 1 -->
+      <section id="demarrer">
+        <h2><span class="em">🚀</span> 1 · Ensiaskeleet</h2>
+        <p class="intro">Ensimmäisellä avauskerralla Lifecoon opastaa sinut muutaman näytön läpi: esittely, suostumus ja sitten sovelluksen suojaus. Ei tiliä, ei kirjautumista, ei sähköpostiosoitetta.</p>
+
+        <h3>Sovelluksen suojaaminen</h3>
+        <p>Voit lukita Lifecoonin <strong>PIN-koodilla</strong> ja/tai <strong>Face ID:llä / sormenjäljellä</strong>. Sovellus lukittuu automaattisesti uudelleen, kun se siirtyy taustalle.</p>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li>Ensimmäisellä käynnistyksellä valitse <strong>4–8-numeroinen koodi</strong> ja ota halutessasi käyttöön biometriikka.</li>
+            <li>Muuttaaksesi myöhemmin: <span class="path">⚙️ Asetukset › Suojaus</span> — aseta/poista PIN, ota käyttöön Face ID / sormenjälki.</li>
+          </ol>
+        </div>
+
+        <h3>Profiilin täyttäminen</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li>Avaa <span class="path">⚙️ Asetukset › Profiili</span>.</li>
+            <li>Syötä <strong>nimesi, pituutesi, syntymäaikasi</strong> ja halutessasi valokuva (se näkyy etusivulla).</li>
+            <li>Pituutta käytetään <strong>BMI:n</strong> automaattiseen laskemiseen, kun punnitset itsesi.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Perhe:</strong> voit seurata useita henkilöitä <em>profiilien</em> avulla (<span class="path">⚙️ Asetukset › Profiilit</span>). Jokaisella profiililla on omat mittauksensa, hoitonsa ja ajanvarauksensa.</div>
+      </section>
+
+      <!-- 2 -->
+      <section id="accueil">
+        <h2><span class="em">🏠</span> 2 · Kojelauta</h2>
+        <p class="intro"><strong>Etusivu</strong>-näyttö on päivän yhteenvetosi: viimeisimmät arvot, seuraava ajanvaraus, otettavat lääkkeet, trendit ja seurantahälytykset.</p>
+        <ul class="feat">
+          <li>Viimeisimpien mittaustesi kortit värikoodilla (kynnysarvojesi mukaan)</li>
+          <li>Seurantabanneri, jos jokin trendi ansaitsee huomiota</li>
+          <li>Seuraava ajanvaraus ja päivän lääkkeenotot</li>
+          <li>Päivän vinkki ja ”Lue päiväni” -painike (puhuttu yhteenveto)</li>
+        </ul>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li>Kosketa korttia (Verenpaine, Verensokeri, Paino…) avataksesi suoraan sen <strong>yksityiskohtaisen seurannan</strong>.</li>
+            <li>Kosketa <strong>”+ Lisää mittaus”</strong> -painiketta syöttääksesi arvon vaihtamatta näyttöä.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section id="mesures">
+        <h2><span class="em">❤️</span> 3 · Mittaukset &amp; seuranta</h2>
+        <p class="intro">Seuraa verenpainetta (pulssin kanssa), verensokeria, painoa/BMI:tä, SpO₂:ta, lämpötilaa, sydämen sykettä — ja luo omat mittauksesi. Jokaisella seurannalla on oma käyränsä ja historiansa.</p>
+
+        <h3>Mittauksen tallentaminen</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><strong>Etusivulta</strong> (”+ Lisää mittaus”) tai <span class="path">Seuranta</span>-välilehdeltä.</li>
+            <li>Valitse tyyppi (verenpaine / verensokeri / paino…), syötä arvo — tai käytä <strong>puhesyöttöä</strong>.</li>
+            <li>Verensokerille määritä <strong>ajankohta</strong> (paastolla, ennen/jälkeen aterian, nukkumaanmeno); verenpaineelle sovellus tallentaa myös <strong>pulssin</strong>.</li>
+            <li>Tallenna: arvo ilmestyy heti käyrälle.</li>
+          </ol>
+        </div>
+
+        <h3>Historian lukeminen ja korjaaminen</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">Seuranta</span>-välilehti › valitse mittaus.</li>
+            <li>Liu'uta kaaviolla nähdäksesi jokaisen pisteen; vaihda jaksoksi <strong>7 / 30 / 90 päivää</strong>.</li>
+            <li>Alla olevassa luettelossa kosketa riviä <strong>muokataksesi</strong> tai poistaaksesi sen.</li>
+          </ol>
+        </div>
+
+        <h3>Hälytyskynnysten mukauttaminen</h3>
+        <p>Värit (normaali / seurattava / korkea) perustuvat <strong>sinun</strong> kynnysarvoihisi, eivät diagnoosiin.</p>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">⚙️ Asetukset › Kynnysarvot</span>.</li>
+            <li>Säädä verenpaineen yläarvot, paasto- ja aterianjälkeinen verensokeri sekä verensokerin yksikkö (g/l, mmol/l tai mg/dl).</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section id="traitements">
+        <h2><span class="em">💊</span> 4 · Hoidot &amp; muistutukset</h2>
+        <p class="intro">Hallitse lääkkeitäsi, niiden aikatauluja ja ottamisen ehtoja, saa muistutuksia ja seuraa hoitomyöntyvyyttäsi.</p>
+
+        <h3>Lääkkeen lisääminen</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">Hoidot</span>-välilehti › <strong>”+”</strong>.</li>
+            <li>Anna nimi, annostus, <strong>ottoajat</strong> ja halutessasi valokuva pakkauksesta.</li>
+            <li>Avaa <strong>”Ottamisen ehdot”</strong> tarkentaaksesi: hoidon kesto, ”paastolla” ennen/jälkeen, väli muiden lääkkeiden kanssa, ohjeet.</li>
+            <li>Lisää <strong>vaikuttava aine (INN)</strong>, jotta sovellus tunnistaa päällekkäisyydet ja yhteisvaikutukset.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Muistutukset:</strong> salli ilmoitukset ensimmäisellä pyynnöllä. Sovellus muistuttaa sinua valittuun aikaan, <strong>myös ilman yhteyttä</strong>, ja näyttää tarvittaessa ”paastolla”-ohjeen.</div>
+
+        <h3>Lääkkeenoton merkitseminen &amp; myöntyvyyden seuranta</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><strong>Etusivulla</strong> tai <span class="path">Hoidot</span>-välilehdellä merkitse jokainen otto <strong>Otettu ✓ / Unohtui</strong>.</li>
+            <li><strong>”Myöntyvyys 30 päivän ajalta”</strong> -kortti näyttää prosenttiosuutesi ja unohdukset.</li>
+          </ol>
+        </div>
+
+        <h3>Sivuvaikutukset &amp; yhteisvaikutukset</h3>
+        <ul class="feat">
+          <li>Kirjaa sivuvaikutus lääkekohtaisesti (lievä / kohtalainen / voimakas + huomautus) — sisällytetään raporttiin.</li>
+          <li>Sovellus ilmoittaa <strong>vaikuttavan aineen päällekkäisyyksistä</strong> ja <strong>aikatauluristiriidoista</strong> (varoitukset eivät estä toimintaa; keskustele lääkärisi kanssa).</li>
+        </ul>
+      </section>
+
+      <!-- 5 -->
+      <section id="medical">
+        <h2><span class="em">📅</span> 5 · Lääketiede-välilehti</h2>
+        <p class="intro">Versiosta 2.4.0 lähtien <strong>Lääketiede</strong>-välilehti kokoaa kaiken hoitohenkilöstöäsi ja määräaikojasi koskevan: ajanvaraukset, lääkärit, apteekit ja tutkimukset.</p>
+
+        <h3>Ajanvaraukset</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">Lääketiede › Ajanvaraukset</span> -välilehti › <strong>”+”</strong>.</li>
+            <li>Anna syy, päivämäärä, paikka, hoitaja ja <strong>muistutus</strong>.</li>
+            <li>Vaihtoehto: synkronoi <strong>kalenteriisi</strong> (puhelimen kalenteri tai Asetuksissa määritetty CalDAV-tili).</li>
+          </ol>
+        </div>
+
+        <h3>Lääkärini &amp; apteekit</h3>
+        <ul class="feat">
+          <li>Lääkärikirja: puhelinnumero ja osoite <strong>napautettavina</strong>, kytkettyinä ajanvarauksiisi.</li>
+          <li>Apteekkikirja + <strong>apteekin ostoslista</strong> (noudettavat lääkkeet, uudelleen ostettavat tarvikkeet), jaettavissa.</li>
+        </ul>
+
+        <h3>Reseptit &amp; tutkimukset</h3>
+        <ul class="feat">
+          <li>Uusittavat reseptit: voimassaolo, valokuvat, kytketyt lääkkeet, <strong>vanhenemishälytys</strong>.</li>
+          <li>Muistutukset tutkimuksista, joita ei saa unohtaa.</li>
+        </ul>
+      </section>
+
+      <!-- 6 -->
+      <section id="imports">
+        <h2><span class="em">📥</span> 6 · Automaattiset tuonnit</h2>
+        <p class="intro">Lifecoon voi täyttää tietosi puolestasi reseptistä, hoitoyhteenvedosta tai yhdistetystä laitteesta. Kaikki tapahtuu <strong>laitteella</strong>, offline-tilassa.</p>
+
+        <h3>Reseptin tuominen (PDF tai valokuva)</h3>
+        <p>Sovellus lukee reseptin ja ehdottaa <strong>lääkkeiden ja niiden annostuksen</strong> luomista automaattisesti.</p>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">Hoidot</span>-välilehti tai <strong>”Skannaa”</strong>-painike › valitse ”Resepti”.</li>
+            <li>Ota valokuva tai valitse PDF.</li>
+            <li>Tarkista ehdotetut lääkkeet ja aikataulut, <strong>korjaa tarvittaessa</strong> ja vahvista.</li>
+          </ol>
+        </div>
+        <div class="warn">Aina <strong>tarkista</strong> tunnistettu tieto ennen vahvistamista: automaattinen luku voi erehtyä. Se ei korvaa lääkärisi reseptiä.</div>
+
+        <h3>Tutkimuksen tai laboratorioanalyysin tuominen</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">Seuranta › Tuonti</span> -välilehti (tai kohdasta ”Mukautetut mittaukset”).</li>
+            <li>Valitse <strong>PDF</strong>-raportti tai <strong>valokuva</strong>; sovellus poimii arvot.</li>
+            <li>Kohdista jokainen arvo mittaukseen (verensokeri, paino tai mukautettu mittaus), valitse päivämäärä, vahvista.</li>
+          </ol>
+        </div>
+
+        <h3>Bluetooth-yhdistetyt laitteet</h3>
+        <p>Tuo automaattisesti yhteensopivasta <strong>verenpainemittarista, verensokerimittarista tai vaa'asta</strong> (vakiona olevat Bluetooth-profiilit).</p>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">Seuranta › Yhdistetyt laitteet</span> -välilehti.</li>
+            <li>Salli Bluetooth, käynnistä haku, valitse laitteesi ja seuraa mittausta.</li>
+          </ol>
+        </div>
+
+        <h3>Apple Terveys / Health Connect</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">⚙️ Asetukset › Health Connect</span> (Android) tai <span class="path">Apple Terveys</span> (iOS).</li>
+            <li>Salli lukeminen; tuonti (paino) tapahtuu vain luku -tilassa, paikallisesti.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section id="dossier">
+        <h2><span class="em">📄</span> 7 · Kansio-välilehti &amp; lääkäriraportti</h2>
+        <p class="intro"><strong>Kansio</strong>-välilehti kokoaa kaiken, mitä jaat tai säilytät tallessa: lääkärille tarkoitetun raportin, hätäkortin, rokotukset, asiakirjat ja kuukausikatsauksen.</p>
+
+        <h3>Lääkärillesi tarkoitetun raportin luominen</h3>
+        <p>Tämä on lippulaivatoiminto: <strong>selkeä PDF</strong> valitsemaltasi ajanjaksolta yhteenvedoineen, kaavioineen ja tietoineen, kynnysarvojen ylittävät arvot korostettuina.</p>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">Kansio › Raportti</span> -välilehti.</li>
+            <li>Valitse <strong>ajanjakso</strong> (7 pv, 30 pv, 3 kk, 12 kk, kaikki).</li>
+            <li>Luo, sitten <strong>jaa</strong> PDF (sähköposti, tulostus, viestit…). Voit myös viedä <strong>Excel</strong>-muotoon tai <strong>ruudukkotaulukoiksi</strong> (vihkomaisesti).</li>
+          </ol>
+        </div>
+
+        <h3>Hätäkortti</h3>
+        <p>Veriryhmä, allergiat, ilmoitettava henkilö ja käynnissä olevat hoidot — hyödyllistä ensiavulle.</p>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">Kansio › Hätäkortti</span> -välilehti; täytä tietosi.</li>
+            <li>Ota käyttöön <strong>”Näytä ilman lukituksen avaamista”</strong>, jotta lukitusnäytölle ilmestyy painike (vain luku).</li>
+          </ol>
+        </div>
+
+        <h3>Rokotukset, asiakirjat &amp; kuukausikatsaus</h3>
+        <ul class="feat">
+          <li><strong>Rokotuskirja</strong> muistutuksineen, sisällytetty hätäkorttiin ja raporttiin.</li>
+          <li><strong>Asiakirjat</strong> (valokuva tai PDF) offline-OCR:llä tekstin löytämiseksi.</li>
+          <li><strong>Kuukausikatsaus</strong> ”Terveyskuukautesi”: keskiarvot, trendit, myöntyvyys, PDF-viennillä ja muistutuksella kuun 1. päivänä.</li>
+          <li><strong>Sairaalan yhteystietolomake</strong> PDF-muodossa (henkilötiedot, allergiat, hoidot, rokotukset, arvot, lääkärit).</li>
+        </ul>
+      </section>
+
+      <!-- 8 -->
+      <section id="analyses">
+        <h2><span class="em">📈</span> 8 · Kehittyneet analyysit</h2>
+
+        <h3>Mukautetut mittaukset</h3>
+        <p>Luo omat seurantasi (uloshengityksen huippuvirtaus, jokin laboratorioarvo…) yksikön, desimaalien ja kynnysarvojen kera.</p>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">⚙️ Asetukset › Mukautetut mittaukset</span> › luo tyyppi (nimi, yksikkö, kynnysarvot).</li>
+            <li>Se ilmestyy sen jälkeen <span class="path">Seuranta</span>-välilehdelle käyrineen ja historioineen.</li>
+          </ol>
+        </div>
+
+        <h3>Kivun seuranta</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">Seuranta › Kipu</span> -välilehti.</li>
+            <li>Kosketa kyseistä <strong>kehon aluetta</strong>, säädä <strong>voimakkuus (0–10)</strong>, lisää huomautus. Trendi sisällytetään raporttiin.</li>
+          </ol>
+        </div>
+
+        <h3>Korrelaatiot &amp; tulostettava lääkeannostelija</h3>
+        <ul class="feat">
+          <li><strong>Korrelaatiot:</strong> aseta kaksi mittausta päällekkäin ja tunnista yhteydet (hoidon alku-/loppumerkinnöin).</li>
+          <li><strong>Viikon lääkeannostelija:</strong> ruudukko ajankohdat × 7 päivää, vietävissä vaakasuuntaisena PDF:nä tulostusta varten.</li>
+          <li><strong>Vastaanoton valmistelu:</strong> kirjaa kysymyksesi ja mukaan otettava yhteenveto (PDF).</li>
+        </ul>
+      </section>
+
+      <!-- 9 -->
+      <section id="alertes">
+        <h2><span class="em">🔔</span> 9 · Hälytykset &amp; saavutettavuus</h2>
+
+        <h3>Älykkäät hälytykset</h3>
+        <p>Sovellus seuraa trendejäsi ja varoittaa sinua ohjeellisesti: aamun verenpaine nousussa, verensokeri usein tavoitteen yläpuolella, painon vaihtelu, myöntyvyyden lasku.</p>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">⚙️ Asetukset › Älykkäät hälytykset</span> ottaaksesi ne käyttöön/pois käytöstä.</li>
+          </ol>
+        </div>
+
+        <h3>Lukumukavuus (senioreille)</h3>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><span class="path">⚙️ Asetukset › Näyttö</span>: ota käyttöön <strong>”Suuri näyttö”</strong> (isommat tekstit ja painikkeet) ja <strong>”Suuri kontrasti”</strong>.</li>
+            <li>Vaihda <strong>kieli</strong> yhdeksästä saatavilla olevasta kohdassa <span class="path">⚙️ Asetukset › Kieli</span>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section id="sauvegarde">
+        <h2><span class="em">💾</span> 10 · Varmuuskopiointi &amp; älä koskaan menetä tietojasi</h2>
+        <p class="intro">Tietosi eivät poistu laitteelta: siksi sinun on itse säilytettävä kopio. Lifecoon tekee siitä helppoa ja automaattista.</p>
+        <div class="how">
+          <div class="lbl">Näin teet</div>
+          <ol>
+            <li><strong>Manuaalinen varmuuskopio:</strong> <span class="path">⚙️ Asetukset › Varmuuskopio › Vie</span> luo <strong>salatun tiedoston (.lifecoon)</strong>, jonka säilytät missä haluat.</li>
+            <li><strong>Automaattinen varmuuskopio:</strong> valitse <strong>kansio</strong> (esim. iCloud Drive / Tiedostot); sinne kirjoitetaan säännöllisesti salattu kopio — se <strong>säilyy asennuksen poistosta huolimatta</strong>.</li>
+            <li><strong>Palauta:</strong> <span class="path">⚙️ Asetukset › Varmuuskopio › Tuo</span> ja valitse .lifecoon-tiedostosi.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Puhelimen vaihto:</strong> vie varmuuskopio vanhalta puhelimelta, asenna Lifecoon uuteen ja tuo sitten tiedosto. Sovelluksen päivitykset <strong>säilyttävät</strong> tietosi.</div>
+      </section>
+
+      <!-- 11 -->
+      <section id="confidentialite">
+        <h2><span class="em">🔒</span> 11 · Tietosuoja &amp; turvallisuus</h2>
+        <ul class="feat">
+          <li>Mitään tietoja ei lähetetä internetiin, ei tiliä, ei mainoksia, ei seurantaa.</li>
+          <li><strong>Salattu</strong> tietokanta laitteella, lukitus PIN-koodilla ja biometriikalla.</li>
+          <li>Voit <strong>poistaa kaiken</strong> milloin tahansa (<span class="path">⚙️ Asetukset › Tiedot › Poista</span>).</li>
+          <li>Päivitysten tarkistus ei välitä <strong>mitään</strong> henkilötietoja.</li>
+        </ul>
+        <p style="margin-top:10px">Täydelliset tiedot löytyvät <a href="privacy.html" style="color:var(--teal);font-weight:700">tietosuojakäytännöstä</a>.</p>
+      </section>
+
+      <!-- 12 -->
+      <section id="faq">
+        <h2><span class="em">❓</span> 12 · Usein kysytyt kysymykset</h2>
+        <h3>Korvaako sovellus lääkärin?</h3>
+        <p>Ei. Lifecoon on seurantavihko. Se ei tee mitään diagnoosia eikä korvaa lääkärin arviota. Hälytykset perustuvat yksinomaan määrittelemiisi kynnysarvoihin.</p>
+        <h3>Onko se todella ilmainen?</h3>
+        <p>Kyllä, täysin: ei maksullisia toimintoja, ei tilausta, ei sovelluksen sisäisiä ostoksia.</p>
+        <h3>Ovatko tietoni pilvessä?</h3>
+        <p>Ei. Kaikki pysyy laitteellasi, salattuna. Luomasi varmuuskopiot menevät sinne, minne valitset.</p>
+        <h3>Miten saan uutuudet?</h3>
+        <p>iPhonella App Storen kautta. Androidilla Google Playn tai suoran APK:n kautta: sovellus ilmoittaa sinulle automaattisesti, kun uusi versio on saatavilla.</p>
+      </section>
+
+      <a class="backtop" href="#">↑ Palaa ylös</a>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>Lifecoon — Terveysseuranta</strong> · Bengacoon · Saatavilla 9 kielellä<br>
+    <a href="index.html" data-i18n="footer_home">Etusivu</a> &nbsp;·&nbsp;
+    <a href="guide.html" data-i18n="footer_guide">Opas</a> &nbsp;·&nbsp;
+    <a href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md" data-i18n="footer_versions">Versiot</a> &nbsp;·&nbsp;
+    <a href="privacy.html" data-i18n="footer_privacy">Tietosuojakäytäntö</a> &nbsp;·&nbsp; © 2026 Bengacoon
+    <p class="disc">Lifecoon on henkilökohtainen terveysvihko. Se ei tee mitään diagnoosia, ei ole hoito eikä korvaa terveydenhuollon ammattilaisen arviota. Hälytykset perustuvat yksinomaan määrittelemiisi kynnysarvoihin.</p>
+  </div>
+</footer>
+
+<script>
+/* Sélecteur de langue : navigue entre les variantes traduites de cette page. */
+(function(){
+  var LANGS={fr:'Français',en:'English',de:'Deutsch',it:'Italiano',pt:'Português',es:'Español',sv:'Svenska',nb:'Norsk',fi:'Suomi'};
+  var BASE='guide';
+  function fileFor(l){ return l==='fr' ? BASE+'.html' : BASE+'-'+l+'.html'; }
+  var m=location.pathname.match(/guide(?:-([a-z]{2}))?\.html/);
+  var cur=(m&&m[1])||'fr';
+  // Respecter le choix mémorisé sur l'accueil (redirige une seule fois vers la bonne variante).
+  try{ var st=localStorage.getItem('lifecoon_lang'); if(st&&st!==cur&&LANGS[st]){ location.replace(fileFor(st)); return; } }catch(e){}
+  document.addEventListener('DOMContentLoaded',function(){
+    var sel=document.getElementById('langSel'); if(!sel) return;
+    Object.keys(LANGS).forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=LANGS[c];if(c===cur)o.selected=true;sel.appendChild(o);});
+    sel.addEventListener('change',function(){ try{localStorage.setItem('lifecoon_lang',sel.value);}catch(e){} location.href=fileFor(sel.value); });
+  });
+})();
+</script>
+</body>
+</html>

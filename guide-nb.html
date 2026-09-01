@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lifecoon — Bruksanvisning: alt du kan gjøre, og hvordan</title>
+<meta name="description" content="Komplett guide til Lifecoon (av Bengacoon): målinger, behandlinger, påminnelser, resepter, avtaler, importer, legerapport, sikkerhetskopi. Hva du kan gjøre og hvordan du gjør det, steg for steg.">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Lifecoon — Bruksanvisning">
+<meta property="og:description" content="Hva du kan gjøre i Lifecoon og hvordan du gjør det, steg for steg.">
+<meta property="og:image" content="assets/icon.png">
+<style>
+  :root{
+    --teal:#457B7A; --teal-fonce:#2F5654; --or:#C98A4B; --or-clair:#E7C79B;
+    --creme:#F5F6F4; --creme-2:#E9ECE7; --texte:#243230; --muted:#63706C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--texte);background:var(--creme);line-height:1.65}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:rgba(245,246,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--creme-2)}
+  header .wrap{display:flex;align-items:center;gap:12px;height:64px}
+  header img{width:36px;height:36px;border-radius:9px}
+  header .brand{font-weight:800;font-size:19px;letter-spacing:.2px;text-decoration:none}
+  header .brand small{display:block;font-weight:600;font-size:11px;color:var(--muted);letter-spacing:.3px}
+  header nav{margin-left:auto;display:flex;gap:22px;font-size:14px;font-weight:600}
+  header nav a{color:var(--muted);text-decoration:none}
+  header nav a:hover,header nav a.active{color:var(--teal)}
+  @media(max-width:640px){header nav{display:none}}
+  .langsel{margin-left:14px;background:#fff;border:1px solid var(--creme-2);color:var(--texte);
+    font-size:13px;font-weight:600;border-radius:9px;padding:6px 8px;cursor:pointer}
+  @media(max-width:640px){.langsel{margin-left:auto}}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg,var(--teal) 0%,var(--teal-fonce) 100%);color:#fff;text-align:center;padding:56px 0 60px;position:relative;overflow:hidden}
+  .hero .blob{position:absolute;border-radius:50%;opacity:.09;background:var(--or-clair)}
+  .hero .b1{width:260px;height:260px;top:-70px;left:-50px}
+  .hero .b2{width:190px;height:190px;bottom:-60px;right:-40px}
+  .hero .par{color:var(--or-clair);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;position:relative}
+  .hero h1{font-size:40px;line-height:1.1;font-weight:800;letter-spacing:-.5px;position:relative}
+  .hero p.lead{max-width:640px;margin:16px auto 0;font-size:17px;color:#EAF1F0;position:relative}
+  @media(max-width:640px){.hero h1{font-size:30px}.hero p.lead{font-size:15px}}
+
+  /* Layout doc : sommaire + contenu */
+  .doc{display:grid;grid-template-columns:250px 1fr;gap:38px;padding:48px 0 20px;align-items:start}
+  @media(max-width:860px){.doc{grid-template-columns:1fr;gap:20px}}
+
+  .toc{position:sticky;top:84px;background:#fff;border:1px solid var(--creme-2);border-radius:16px;padding:18px 18px}
+  @media(max-width:860px){.toc{position:static}}
+  .toc h4{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--or);margin-bottom:12px}
+  .toc a{display:block;color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:6px 0;border-bottom:1px solid #f0f2ee}
+  .toc a:last-child{border-bottom:none}
+  .toc a:hover{color:var(--teal)}
+
+  /* Sections de doc */
+  .doc-body section{background:#fff;border:1px solid var(--creme-2);border-radius:18px;padding:30px 28px;margin-bottom:22px;scroll-margin-top:84px}
+  .doc-body h2{font-size:24px;font-weight:800;color:var(--teal-fonce);letter-spacing:-.3px;display:flex;align-items:center;gap:12px}
+  .doc-body h2 .em{font-size:26px}
+  .doc-body h3{font-size:17px;font-weight:800;color:var(--teal);margin:22px 0 6px}
+  .doc-body p{color:var(--texte);font-size:15.5px;margin:8px 0}
+  .doc-body p.intro{color:var(--muted);font-size:15.5px;margin-top:10px}
+  .doc-body ul.feat{list-style:none;margin:10px 0 4px}
+  .doc-body ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:15px}
+  .doc-body ul.feat li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+
+  /* "Comment faire" */
+  .how{background:var(--creme);border-radius:14px;padding:16px 18px;margin-top:16px;border:1px solid var(--creme-2)}
+  .how .lbl{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--or);margin-bottom:10px}
+  .how ol{margin:0 0 0 4px;padding-left:20px}
+  .how ol li{font-size:14.5px;margin:6px 0;padding-left:4px}
+  .how ol li strong{color:var(--teal-fonce)}
+  .path{display:inline-block;background:#fff;border:1px solid var(--creme-2);border-radius:7px;padding:1px 8px;font-size:13px;font-weight:700;color:var(--teal);white-space:nowrap}
+
+  .tip{margin-top:14px;background:#FBF3E7;border:1px solid var(--or-clair);border-radius:12px;padding:12px 16px;font-size:14px;color:#5c4a2c}
+  .tip strong{color:var(--or)}
+  .warn{margin-top:14px;background:#FCEDED;border:1px solid #EBC9C9;border-radius:12px;padding:12px 16px;font-size:14px;color:#7a3b3b}
+
+  .lede{font-size:16px;color:var(--muted);max-width:760px;margin:0 auto 8px;text-align:center}
+
+  footer{background:var(--teal-fonce);color:#B9C9C7;text-align:center;padding:40px 0;font-size:13.5px;margin-top:20px}
+  footer a{color:var(--or-clair);text-decoration:none}
+  footer .disc{max-width:660px;margin:16px auto 0;font-size:12px;color:#8FA7A4;line-height:1.5}
+
+  .backtop{display:block;text-align:center;margin:6px 0 30px;color:var(--teal);font-weight:700;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="assets/icon.png" alt="Lifecoon">
+    <a class="brand" href="index.html">Lifecoon<small>av Bengacoon</small></a>
+    <nav>
+      <a href="index.html#fonctions" data-i18n="nav_features">Funksjoner</a>
+      <a href="guide.html" class="active" data-i18n="nav_guide">Guide</a>
+      <a href="index.html#versions" data-i18n="nav_news">Nyheter</a>
+      <a href="index.html#telecharger" data-i18n="nav_download">Last ned</a>
+      <a href="privacy.html" data-i18n="nav_privacy">Personvern</a>
+    </nav>
+    <select id="langSel" class="langsel" aria-label="Language"></select>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <div class="wrap">
+    <div class="par">Bruksanvisning</div>
+    <h1>Alt du kan gjøre</h1>
+    <p class="lead">Lifecoon samler hele helsen din på ett sted. Denne guiden viser deg, funksjon for funksjon, <strong>hva appen kan gjøre</strong> og <strong>hvordan du gjør det</strong>, steg for steg.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="doc">
+
+    <!-- SOMMAIRE -->
+    <aside class="toc">
+      <h4>Innhold</h4>
+      <a href="#demarrer">1 · Komme i gang</a>
+      <a href="#accueil">2 · Kontrollpanelet</a>
+      <a href="#mesures">3 · Målinger &amp; oppfølging</a>
+      <a href="#traitements">4 · Behandlinger &amp; påminnelser</a>
+      <a href="#medical">5 · Medisinsk-fanen</a>
+      <a href="#imports">6 · Automatiske importer</a>
+      <a href="#dossier">7 · Journal-fanen &amp; rapport</a>
+      <a href="#analyses">8 · Avanserte analyser</a>
+      <a href="#alertes">9 · Varsler &amp; tilgjengelighet</a>
+      <a href="#sauvegarde">10 · Sikkerhetskopi &amp; dine data</a>
+      <a href="#confidentialite">11 · Personvern</a>
+      <a href="#faq">12 · Vanlige spørsmål</a>
+    </aside>
+
+    <!-- CONTENU -->
+    <div class="doc-body">
+
+      <p class="lede">Tips: Lifecoon er organisert i 5 rom nederst på skjermen — <strong>Hjem</strong>, <strong>Oppfølging</strong>, <strong>Behandlinger</strong>, <strong>Medisinsk</strong> og <strong>Journal</strong> — pluss hjulet <strong>⚙️ Innstillinger</strong> øverst. Alt starter der.</p>
+      <br>
+
+      <!-- 1 -->
+      <section id="demarrer">
+        <h2><span class="em">🚀</span> 1 · Komme i gang</h2>
+        <p class="intro">Ved første åpning leder Lifecoon deg gjennom noen få skjermer: presentasjon, samtykke, og deretter beskyttelse av appen. Ingen konto, ingen innlogging, ingen e-postadresse.</p>
+
+        <h3>Beskytte appen</h3>
+        <p>Du kan låse Lifecoon med <strong>PIN-kode</strong> og/eller <strong>Face ID / fingeravtrykk</strong>. Appen låser seg automatisk igjen når den går i bakgrunnen.</p>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Ved første oppstart velger du en <strong>kode på 4–8 sifre</strong>, og aktiverer deretter biometri hvis du ønsker.</li>
+            <li>For å endre senere: <span class="path">⚙️ Innstillinger › Sikkerhet</span> — sett/fjern PIN, aktiver Face ID / fingeravtrykk.</li>
+          </ol>
+        </div>
+
+        <h3>Fylle inn profilen din</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Åpne <span class="path">⚙️ Innstillinger › Profil</span>.</li>
+            <li>Skriv inn <strong>navn, høyde, fødselsdato</strong> og et bilde hvis du vil (det vises på hjem-skjermen).</li>
+            <li>Høyden brukes til automatisk beregning av <strong>BMI</strong> når du veier deg.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Familie:</strong> du kan følge opp flere personer via <em>profiler</em> (<span class="path">⚙️ Innstillinger › Profiler</span>). Hver profil har sine egne målinger, behandlinger og avtaler.</div>
+      </section>
+
+      <!-- 2 -->
+      <section id="accueil">
+        <h2><span class="em">🏠</span> 2 · Kontrollpanelet</h2>
+        <p class="intro">Skjermen <strong>Hjem</strong> er dagens sammendrag: siste verdier, neste avtale, medisiner som skal tas, trender og oppmerksomhetsvarsler.</p>
+        <ul class="feat">
+          <li>Kort med de siste målingene dine med fargekode (etter dine terskler)</li>
+          <li>Oppmerksomhetsbanner hvis en trend fortjener oppmerksomhet</li>
+          <li>Neste avtale og dagens doser</li>
+          <li>Dagens råd og knappen «Les dagen min» (talt sammendrag)</li>
+        </ul>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Trykk på et kort (Blodtrykk, Blodsukker, Vekt …) for å åpne den <strong>detaljerte oppfølgingen</strong> direkte.</li>
+            <li>Trykk på knappen <strong>«+ Legg til måling»</strong> for å registrere en verdi uten å bytte skjerm.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section id="mesures">
+        <h2><span class="em">❤️</span> 3 · Målinger &amp; oppfølging</h2>
+        <p class="intro">Følg blodtrykk (med puls), blodsukker, vekt/BMI, SpO₂, temperatur, hjertefrekvens — og lag dine egne målinger. Hver oppfølging har sin kurve og sin historikk.</p>
+
+        <h3>Registrere en måling</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fra <strong>Hjem</strong> («+ Legg til måling») eller fanen <span class="path">Oppfølging</span>.</li>
+            <li>Velg type (blodtrykk / blodsukker / vekt …), skriv inn verdien — eller bruk <strong>taleinntasting</strong>.</li>
+            <li>For blodsukker angir du <strong>tidspunktet</strong> (fastende, før/etter måltid, ved leggetid); for blodtrykk registrerer appen også <strong>pulsen</strong>.</li>
+            <li>Lagre: verdien vises straks i kurven.</li>
+          </ol>
+        </div>
+
+        <h3>Lese og korrigere historikken</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fanen <span class="path">Oppfølging</span> › velg målingen.</li>
+            <li>Dra over grafen for å se hvert punkt; endre perioden <strong>7 / 30 / 90 dager</strong>.</li>
+            <li>I listen under trykker du på en rad for å <strong>endre</strong> eller slette den.</li>
+          </ol>
+        </div>
+
+        <h3>Tilpasse varseltersklene</h3>
+        <p>Fargene (normal / bør overvåkes / høy) baserer seg på <strong>dine</strong> terskler, ikke på en diagnose.</p>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li><span class="path">⚙️ Innstillinger › Terskler</span>.</li>
+            <li>Juster øvre verdier for blodtrykk, fastende og postprandialt blodsukker, samt blodsukkerenhet (g/L, mmol/L eller mg/dL).</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section id="traitements">
+        <h2><span class="em">💊</span> 4 · Behandlinger &amp; påminnelser</h2>
+        <p class="intro">Administrer medisinene dine, tidspunktene og betingelsene for inntak, motta påminnelser og følg etterlevelsen din.</p>
+
+        <h3>Legge til en medisin</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fanen <span class="path">Behandlinger</span> › <strong>«+»</strong>.</li>
+            <li>Fyll inn navn, dosering, <strong>tidspunkter for inntak</strong>, og et bilde av esken hvis du vil.</li>
+            <li>Åpne <strong>«Betingelser for inntak»</strong> for å angi: varighet av kuren, «fastende» før/etter, avstand til andre medisiner, instruksjoner.</li>
+            <li>Legg til <strong>virkestoffet (INN)</strong> slik at appen kan oppdage duplikater og interaksjoner.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Påminnelser:</strong> tillat varsler ved første forespørsel. Appen varsler deg til valgt tidspunkt, <strong>selv uten forbindelse</strong>, og viser «fastende»-instruksjonen der det er aktuelt.</div>
+
+        <h3>Registrere et inntak &amp; følge etterlevelsen</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>På <strong>Hjem</strong> eller i <span class="path">Behandlinger</span> huker du av hvert inntak <strong>Tatt ✓ / Glemt</strong>.</li>
+            <li>Kortet <strong>«Etterlevelse over 30 dager»</strong> viser prosentandelen din og de glemte inntakene.</li>
+          </ol>
+        </div>
+
+        <h3>Bivirkninger &amp; interaksjoner</h3>
+        <ul class="feat">
+          <li>Noter en bivirkning per medisin (lett / moderat / sterk + notat) — tas med i rapporten.</li>
+          <li>Appen varsler om <strong>duplikater av virkestoff</strong> og <strong>tidskonflikter</strong> (ikke-blokkerende advarsler; drøft dem med legen din).</li>
+        </ul>
+      </section>
+
+      <!-- 5 -->
+      <section id="medical">
+        <h2><span class="em">📅</span> 5 · Medisinsk-fanen</h2>
+        <p class="intro">Fra og med versjon 2.4.0 samler <strong>Medisinsk</strong>-fanen alt som gjelder behandlerne dine og fristene dine: avtaler, leger, apotek og undersøkelser.</p>
+
+        <h3>Avtaler</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fanen <span class="path">Medisinsk › Avtaler</span> › <strong>«+»</strong>.</li>
+            <li>Fyll inn grunn, dato, sted, behandler og en <strong>påminnelse</strong>.</li>
+            <li>Valgfritt: synkroniser til <strong>kalenderen</strong> din (telefonens kalender eller en CalDAV-konto satt opp i Innstillinger).</li>
+          </ol>
+        </div>
+
+        <h3>Mine leger &amp; apotek</h3>
+        <ul class="feat">
+          <li>Legebok: telefon og adresse <strong>klikkbare</strong>, koblet til avtalene dine.</li>
+          <li>Apotekbok + <strong>handleliste for apotek</strong> (medisiner som skal hentes, forbruksvarer som skal etterkjøpes), delbar.</li>
+        </ul>
+
+        <h3>Resepter &amp; undersøkelser</h3>
+        <ul class="feat">
+          <li>Fornybare resepter: gyldighet, bilder, tilknyttede medisiner, <strong>utløpsvarsel</strong>.</li>
+          <li>Påminnelser om undersøkelser du ikke må glemme.</li>
+        </ul>
+      </section>
+
+      <!-- 6 -->
+      <section id="imports">
+        <h2><span class="em">📥</span> 6 · Automatiske importer</h2>
+        <p class="intro">Lifecoon kan fylle inn dataene dine for deg fra en resept, en rapport eller et tilkoblet apparat. Alt skjer <strong>på enheten</strong>, uten nett.</p>
+
+        <h3>Importere en resept (PDF eller bilde)</h3>
+        <p>Appen leser resepten og foreslår å opprette <strong>medisinene og doseringen deres</strong> automatisk.</p>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fanen <span class="path">Behandlinger</span> eller knappen <strong>«Skann»</strong> › velg «Resept».</li>
+            <li>Ta et bilde eller velg en PDF.</li>
+            <li>Kontroller de foreslåtte medisinene og tidspunktene, <strong>rett opp ved behov</strong>, og bekreft.</li>
+          </ol>
+        </div>
+        <div class="warn">Alltid <strong>kontroller</strong> det som er gjenkjent før du bekrefter: den automatiske lesingen kan ta feil. Den erstatter ikke resepten fra legen din.</div>
+
+        <h3>Importere en undersøkelse eller en laboratorieanalyse</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fanen <span class="path">Oppfølging › Import</span> (eller fra «Egendefinerte målinger»).</li>
+            <li>Velg en <strong>PDF</strong>-rapport eller et <strong>bilde</strong>; appen henter ut verdiene.</li>
+            <li>Tilordne hver verdi til en måling (blodsukker, vekt, eller en egendefinert måling), velg datoen, bekreft.</li>
+          </ol>
+        </div>
+
+        <h3>Bluetooth-tilkoblede enheter</h3>
+        <p>Importer automatisk fra et <strong>blodtrykksapparat, en blodsukkermåler eller en vekt</strong> som er kompatible (standard Bluetooth-profiler).</p>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fanen <span class="path">Oppfølging › Tilkoblede enheter</span>.</li>
+            <li>Tillat Bluetooth, start søket, velg enheten din og følg målingen.</li>
+          </ol>
+        </div>
+
+        <h3>Apple Helse / Health Connect</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li><span class="path">⚙️ Innstillinger › Health Connect</span> (Android) eller <span class="path">Apple Helse</span> (iOS).</li>
+            <li>Tillat lesing; importen (vekt) skjer skrivebeskyttet, lokalt.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section id="dossier">
+        <h2><span class="em">📄</span> 7 · Journal-fanen &amp; legerapport</h2>
+        <p class="intro">Fanen <strong>Journal</strong> samler alt du deler eller tar vare på: rapporten til legen, nødkortet, vaksinasjonen, dokumentene og den månedlige oversikten.</p>
+
+        <h3>Lage rapporten til legen din</h3>
+        <p>Dette er hovedfunksjonen: en <strong>tydelig PDF</strong> for perioden du velger, med sammendrag, grafer og avlesninger, med verdier utenfor terskel uthevet.</p>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fanen <span class="path">Journal › Rapport</span>.</li>
+            <li>Velg <strong>perioden</strong> (7 d, 30 d, 3 måneder, 12 måneder, alt).</li>
+            <li>Generer, og <strong>del</strong> deretter PDF-en (e-post, utskrift, melding …). Du kan også eksportere til <strong>Excel</strong> eller til <strong>rutetabeller</strong> (som en dagbok).</li>
+          </ol>
+        </div>
+
+        <h3>Nødkort</h3>
+        <p>Blodtype, allergier, kontaktperson og pågående behandlinger — nyttig for redningspersonell.</p>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fanen <span class="path">Journal › Nødkort</span>; fyll inn opplysningene dine.</li>
+            <li>Aktiver <strong>«Vis uten opplåsing»</strong> slik at en knapp vises på låseskjermen (skrivebeskyttet).</li>
+          </ol>
+        </div>
+
+        <h3>Vaksinasjon, dokumenter &amp; månedlig oversikt</h3>
+        <ul class="feat">
+          <li><strong>Vaksinasjonskort</strong> med påminnelser, tatt med i nødkortet og rapporten.</li>
+          <li><strong>Dokumenter</strong> (bilde eller PDF) med OCR uten nett for å finne igjen teksten.</li>
+          <li><strong>Månedlig oversikt</strong> «Din helsemåned»: gjennomsnitt, trender, etterlevelse, med PDF-eksport og påminnelse den 1. i måneden.</li>
+          <li><strong>Sykehus-følgeskjema</strong> som PDF (identitet, allergier, behandlinger, vaksiner, verdier, leger).</li>
+        </ul>
+      </section>
+
+      <!-- 8 -->
+      <section id="analyses">
+        <h2><span class="em">📈</span> 8 · Avanserte analyser</h2>
+
+        <h3>Egendefinerte målinger</h3>
+        <p>Lag dine egne oppfølginger (PEF-verdi, en laboratorieverdi …) med enhet, desimaler og terskler.</p>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li><span class="path">⚙️ Innstillinger › Egendefinerte målinger</span> › lag en type (navn, enhet, terskler).</li>
+            <li>Den vises deretter i fanen <span class="path">Oppfølging</span> med sin kurve og sin historikk.</li>
+          </ol>
+        </div>
+
+        <h3>Smerteoppfølging</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li>Fanen <span class="path">Oppfølging › Smerte</span>.</li>
+            <li>Trykk på den aktuelle <strong>kroppssonen</strong>, still inn <strong>intensiteten (0–10)</strong>, legg til et notat. Trenden tas med i rapporten.</li>
+          </ol>
+        </div>
+
+        <h3>Korrelasjoner &amp; utskrivbar dosett</h3>
+        <ul class="feat">
+          <li><strong>Korrelasjoner:</strong> legg to målinger oppå hverandre og oppdag sammenhenger (med markører for start/slutt av behandling).</li>
+          <li><strong>Ukens dosett:</strong> et rutenett med tidspunkter × 7 dager, eksporterbart som PDF i liggende format for utskrift.</li>
+          <li><strong>Forberedelse til konsultasjon:</strong> noter spørsmålene dine og et sammendrag å ta med (PDF).</li>
+        </ul>
+      </section>
+
+      <!-- 9 -->
+      <section id="alertes">
+        <h2><span class="em">🔔</span> 9 · Varsler &amp; tilgjengelighet</h2>
+
+        <h3>Smarte varsler</h3>
+        <p>Appen overvåker trendene dine og varsler deg veiledende: morgenblodtrykk som stiger, blodsukker ofte over målet, vektendring, fall i etterlevelse.</p>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li><span class="path">⚙️ Innstillinger › Smarte varsler</span> for å slå dem på/av.</li>
+          </ol>
+        </div>
+
+        <h3>Lesekomfort (seniorer)</h3>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li><span class="path">⚙️ Innstillinger › Visning</span>: aktiver <strong>«Stor visning»</strong> (større tekst og knapper) og <strong>«Høy kontrast»</strong>.</li>
+            <li>Endre <strong>språk</strong> blant 9 tilgjengelige i <span class="path">⚙️ Innstillinger › Språk</span>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section id="sauvegarde">
+        <h2><span class="em">💾</span> 10 · Sikkerhetskopi &amp; aldri miste dataene dine</h2>
+        <p class="intro">Dataene dine forlater ikke enheten: det er derfor opp til deg å beholde en kopi. Lifecoon gjør dette enkelt og automatisk.</p>
+        <div class="how">
+          <div class="lbl">Slik gjør du</div>
+          <ol>
+            <li><strong>Manuell sikkerhetskopi:</strong> <span class="path">⚙️ Innstillinger › Sikkerhetskopi › Eksporter</span> lager en <strong>kryptert (.lifecoon)</strong>-fil som du beholder hvor du vil.</li>
+            <li><strong>Automatisk sikkerhetskopi:</strong> velg en <strong>mappe</strong> (f.eks. iCloud Drive / Filer); en kryptert kopi skrives dit jevnlig — den <strong>overlever en avinstallering</strong>.</li>
+            <li><strong>Gjenopprette:</strong> <span class="path">⚙️ Innstillinger › Sikkerhetskopi › Importer</span> og velg .lifecoon-filen din.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Bytte av telefon:</strong> eksporter en sikkerhetskopi på den gamle, installer Lifecoon på den nye, og importer deretter filen. Oppdateringer av appen <strong>beholder</strong> dataene dine.</div>
+      </section>
+
+      <!-- 11 -->
+      <section id="confidentialite">
+        <h2><span class="em">🔒</span> 11 · Personvern &amp; sikkerhet</h2>
+        <ul class="feat">
+          <li>Ingen data sendt over Internett, ingen konto, ingen reklame, ingen sporing.</li>
+          <li>Database <strong>kryptert</strong> på enheten, låsing med PIN og biometri.</li>
+          <li>Du kan <strong>slette alt</strong> når som helst (<span class="path">⚙️ Innstillinger › Data › Slett</span>).</li>
+          <li>Sjekk av oppdateringer overfører <strong>ingen</strong> personopplysninger.</li>
+        </ul>
+        <p style="margin-top:10px">Fullstendige detaljer i <a href="privacy.html" style="color:var(--teal);font-weight:700">personvernerklæringen</a>.</p>
+      </section>
+
+      <!-- 12 -->
+      <section id="faq">
+        <h2><span class="em">❓</span> 12 · Vanlige spørsmål</h2>
+        <h3>Erstatter appen en lege?</h3>
+        <p>Nei. Lifecoon er en oppfølgingsdagbok. Den stiller ingen diagnose og erstatter ikke en medisinsk vurdering. Varslene baserer seg utelukkende på tersklene du selv definerer.</p>
+        <h3>Er den virkelig gratis?</h3>
+        <p>Ja, helt og holdent: ingen betalte funksjoner, ingen abonnement, ingen kjøp i appen.</p>
+        <h3>Ligger dataene mine i skyen?</h3>
+        <p>Nei. Alt blir værende på enheten din, kryptert. Sikkerhetskopiene du lager går dit du velger.</p>
+        <h3>Hvordan får jeg nyhetene?</h3>
+        <p>På iPhone via App Store. På Android via Google Play eller den direkte APK-en: appen varsler deg automatisk når en ny versjon er tilgjengelig.</p>
+      </section>
+
+      <a class="backtop" href="#">↑ Tilbake til toppen</a>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>Lifecoon — Helseoppfølging</strong> · av Bengacoon · Tilgjengelig på 9 språk<br>
+    <a href="index.html" data-i18n="footer_home">Hjem</a> &nbsp;·&nbsp;
+    <a href="guide.html" data-i18n="footer_guide">Guide</a> &nbsp;·&nbsp;
+    <a href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md" data-i18n="footer_versions">Versjoner</a> &nbsp;·&nbsp;
+    <a href="privacy.html" data-i18n="footer_privacy">Personvernerklæring</a> &nbsp;·&nbsp; © 2026 Bengacoon
+    <p class="disc">Lifecoon er en personlig helsedagbok. Den stiller ingen diagnose, utgjør ikke en behandling og erstatter ikke rådet fra en helsepersonell. Varslene baserer seg utelukkende på tersklene du selv definerer.</p>
+  </div>
+</footer>
+
+<script>
+/* Sélecteur de langue : navigue entre les variantes traduites de cette page. */
+(function(){
+  var LANGS={fr:'Français',en:'English',de:'Deutsch',it:'Italiano',pt:'Português',es:'Español',sv:'Svenska',nb:'Norsk',fi:'Suomi'};
+  var BASE='guide';
+  function fileFor(l){ return l==='fr' ? BASE+'.html' : BASE+'-'+l+'.html'; }
+  var m=location.pathname.match(/guide(?:-([a-z]{2}))?\.html/);
+  var cur=(m&&m[1])||'fr';
+  // Respecter le choix mémorisé sur l'accueil (redirige une seule fois vers la bonne variante).
+  try{ var st=localStorage.getItem('lifecoon_lang'); if(st&&st!==cur&&LANGS[st]){ location.replace(fileFor(st)); return; } }catch(e){}
+  document.addEventListener('DOMContentLoaded',function(){
+    var sel=document.getElementById('langSel'); if(!sel) return;
+    Object.keys(LANGS).forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=LANGS[c];if(c===cur)o.selected=true;sel.appendChild(o);});
+    sel.addEventListener('change',function(){ try{localStorage.setItem('lifecoon_lang',sel.value);}catch(e){} location.href=fileFor(sel.value); });
+  });
+})();
+</script>
+</body>
+</html>

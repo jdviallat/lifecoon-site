@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lifecoon — User Guide: everything you can do, and how</title>
+<meta name="description" content="Complete guide to Lifecoon (by Bengacoon): measurements, treatments, reminders, prescriptions, appointments, imports, doctor report, backup. What you can do and how to do it, step by step.">
+<link rel="icon" href="assets/favicon.png">
+<meta property="og:title" content="Lifecoon — User Guide">
+<meta property="og:description" content="What you can do in Lifecoon and how to do it, step by step.">
+<meta property="og:image" content="assets/icon.png">
+<style>
+  :root{
+    --teal:#457B7A; --teal-fonce:#2F5654; --or:#C98A4B; --or-clair:#E7C79B;
+    --creme:#F5F6F4; --creme-2:#E9ECE7; --texte:#243230; --muted:#63706C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--texte);background:var(--creme);line-height:1.65}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:20;background:rgba(245,246,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--creme-2)}
+  header .wrap{display:flex;align-items:center;gap:12px;height:64px}
+  header img{width:36px;height:36px;border-radius:9px}
+  header .brand{font-weight:800;font-size:19px;letter-spacing:.2px;text-decoration:none}
+  header .brand small{display:block;font-weight:600;font-size:11px;color:var(--muted);letter-spacing:.3px}
+  header nav{margin-left:auto;display:flex;gap:22px;font-size:14px;font-weight:600}
+  header nav a{color:var(--muted);text-decoration:none}
+  header nav a:hover,header nav a.active{color:var(--teal)}
+  @media(max-width:640px){header nav{display:none}}
+  .langsel{margin-left:14px;background:#fff;border:1px solid var(--creme-2);color:var(--texte);
+    font-size:13px;font-weight:600;border-radius:9px;padding:6px 8px;cursor:pointer}
+  @media(max-width:640px){.langsel{margin-left:auto}}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg,var(--teal) 0%,var(--teal-fonce) 100%);color:#fff;text-align:center;padding:56px 0 60px;position:relative;overflow:hidden}
+  .hero .blob{position:absolute;border-radius:50%;opacity:.09;background:var(--or-clair)}
+  .hero .b1{width:260px;height:260px;top:-70px;left:-50px}
+  .hero .b2{width:190px;height:190px;bottom:-60px;right:-40px}
+  .hero .par{color:var(--or-clair);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;position:relative}
+  .hero h1{font-size:40px;line-height:1.1;font-weight:800;letter-spacing:-.5px;position:relative}
+  .hero p.lead{max-width:640px;margin:16px auto 0;font-size:17px;color:#EAF1F0;position:relative}
+  @media(max-width:640px){.hero h1{font-size:30px}.hero p.lead{font-size:15px}}
+
+  /* Layout doc : sommaire + contenu */
+  .doc{display:grid;grid-template-columns:250px 1fr;gap:38px;padding:48px 0 20px;align-items:start}
+  @media(max-width:860px){.doc{grid-template-columns:1fr;gap:20px}}
+
+  .toc{position:sticky;top:84px;background:#fff;border:1px solid var(--creme-2);border-radius:16px;padding:18px 18px}
+  @media(max-width:860px){.toc{position:static}}
+  .toc h4{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--or);margin-bottom:12px}
+  .toc a{display:block;color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:6px 0;border-bottom:1px solid #f0f2ee}
+  .toc a:last-child{border-bottom:none}
+  .toc a:hover{color:var(--teal)}
+
+  /* Sections de doc */
+  .doc-body section{background:#fff;border:1px solid var(--creme-2);border-radius:18px;padding:30px 28px;margin-bottom:22px;scroll-margin-top:84px}
+  .doc-body h2{font-size:24px;font-weight:800;color:var(--teal-fonce);letter-spacing:-.3px;display:flex;align-items:center;gap:12px}
+  .doc-body h2 .em{font-size:26px}
+  .doc-body h3{font-size:17px;font-weight:800;color:var(--teal);margin:22px 0 6px}
+  .doc-body p{color:var(--texte);font-size:15.5px;margin:8px 0}
+  .doc-body p.intro{color:var(--muted);font-size:15.5px;margin-top:10px}
+  .doc-body ul.feat{list-style:none;margin:10px 0 4px}
+  .doc-body ul.feat li{padding:5px 0 5px 26px;position:relative;font-size:15px}
+  .doc-body ul.feat li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+
+  /* "Comment faire" */
+  .how{background:var(--creme);border-radius:14px;padding:16px 18px;margin-top:16px;border:1px solid var(--creme-2)}
+  .how .lbl{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--or);margin-bottom:10px}
+  .how ol{margin:0 0 0 4px;padding-left:20px}
+  .how ol li{font-size:14.5px;margin:6px 0;padding-left:4px}
+  .how ol li strong{color:var(--teal-fonce)}
+  .path{display:inline-block;background:#fff;border:1px solid var(--creme-2);border-radius:7px;padding:1px 8px;font-size:13px;font-weight:700;color:var(--teal);white-space:nowrap}
+
+  .tip{margin-top:14px;background:#FBF3E7;border:1px solid var(--or-clair);border-radius:12px;padding:12px 16px;font-size:14px;color:#5c4a2c}
+  .tip strong{color:var(--or)}
+  .warn{margin-top:14px;background:#FCEDED;border:1px solid #EBC9C9;border-radius:12px;padding:12px 16px;font-size:14px;color:#7a3b3b}
+
+  .lede{font-size:16px;color:var(--muted);max-width:760px;margin:0 auto 8px;text-align:center}
+
+  footer{background:var(--teal-fonce);color:#B9C9C7;text-align:center;padding:40px 0;font-size:13.5px;margin-top:20px}
+  footer a{color:var(--or-clair);text-decoration:none}
+  footer .disc{max-width:660px;margin:16px auto 0;font-size:12px;color:#8FA7A4;line-height:1.5}
+
+  .backtop{display:block;text-align:center;margin:6px 0 30px;color:var(--teal);font-weight:700;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="assets/icon.png" alt="Lifecoon">
+    <a class="brand" href="index.html">Lifecoon<small>by Bengacoon</small></a>
+    <nav>
+      <a href="index.html#fonctions" data-i18n="nav_features">Features</a>
+      <a href="guide.html" class="active" data-i18n="nav_guide">Guide</a>
+      <a href="index.html#versions" data-i18n="nav_news">What's new</a>
+      <a href="index.html#telecharger" data-i18n="nav_download">Download</a>
+      <a href="privacy.html" data-i18n="nav_privacy">Privacy</a>
+    </nav>
+    <select id="langSel" class="langsel" aria-label="Language"></select>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span>
+  <div class="wrap">
+    <div class="par">User Guide</div>
+    <h1>Everything you can do</h1>
+    <p class="lead">Lifecoon brings all your health together in one place. This guide shows you, feature by feature, <strong>what the app can do</strong> and <strong>how to do it</strong>, step by step.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="doc">
+
+    <!-- SOMMAIRE -->
+    <aside class="toc">
+      <h4>Contents</h4>
+      <a href="#demarrer">1 · Getting started</a>
+      <a href="#accueil">2 · The dashboard</a>
+      <a href="#mesures">3 · Measurements &amp; tracking</a>
+      <a href="#traitements">4 · Treatments &amp; reminders</a>
+      <a href="#medical">5 · Medical tab</a>
+      <a href="#imports">6 · Automatic imports</a>
+      <a href="#dossier">7 · Records tab &amp; report</a>
+      <a href="#analyses">8 · Advanced analysis</a>
+      <a href="#alertes">9 · Alerts &amp; accessibility</a>
+      <a href="#sauvegarde">10 · Backup &amp; your data</a>
+      <a href="#confidentialite">11 · Privacy</a>
+      <a href="#faq">12 · Frequently asked questions</a>
+    </aside>
+
+    <!-- CONTENU -->
+    <div class="doc-body">
+
+      <p class="lede">Tip: Lifecoon is organized into 5 spaces at the bottom of the screen — <strong>Home</strong>, <strong>Tracking</strong>, <strong>Treatments</strong>, <strong>Medical</strong> and <strong>Records</strong> — plus the <strong>⚙️ Settings</strong> wheel at the top. Everything starts there.</p>
+      <br>
+
+      <!-- 1 -->
+      <section id="demarrer">
+        <h2><span class="em">🚀</span> 1 · Getting started</h2>
+        <p class="intro">The first time you open it, Lifecoon guides you through a few screens: introduction, consent, then app protection. No account, no sign-in, no email address.</p>
+
+        <h3>Protect the app</h3>
+        <p>You can lock Lifecoon with a <strong>PIN code</strong> and/or <strong>Face ID / fingerprint</strong>. The app re-locks automatically when it goes to the background.</p>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li>On first launch, choose a <strong>4–8 digit code</strong>, then enable biometrics if you wish.</li>
+            <li>To change it later: <span class="path">⚙️ Settings › Security</span> — set/remove the PIN, enable Face ID / fingerprint.</li>
+          </ol>
+        </div>
+
+        <h3>Fill in your profile</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li>Open <span class="path">⚙️ Settings › Profile</span>.</li>
+            <li>Enter your <strong>name, height, date of birth</strong> and a photo if you like (it appears on the home screen).</li>
+            <li>Height is used to automatically calculate your <strong>BMI</strong> when you weigh yourself.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Family:</strong> you can track several people using <em>profiles</em> (<span class="path">⚙️ Settings › Profiles</span>). Each profile has its own measurements, treatments and appointments.</div>
+      </section>
+
+      <!-- 2 -->
+      <section id="accueil">
+        <h2><span class="em">🏠</span> 2 · The dashboard</h2>
+        <p class="intro">The <strong>Home</strong> screen is your daily summary: latest values, next appointment, medications to take, trends and vigilance alerts.</p>
+        <ul class="feat">
+          <li>Cards of your latest measurements with color coding (based on your thresholds)</li>
+          <li>Vigilance banner if a trend deserves attention</li>
+          <li>Next appointment and today's doses</li>
+          <li>Tip of the day and a "Read my day" button (spoken summary)</li>
+        </ul>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li>Tap a card (Blood pressure, Blood sugar, Weight…) to open its <strong>detailed tracking</strong> directly.</li>
+            <li>Tap the <strong>"+ Add a measurement"</strong> button to enter a value without leaving the screen.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section id="mesures">
+        <h2><span class="em">❤️</span> 3 · Measurements &amp; tracking</h2>
+        <p class="intro">Track blood pressure (with pulse), blood sugar, weight/BMI, SpO₂, temperature, heart rate — and create your own measurements. Each tracker has its own curve and history.</p>
+
+        <h3>Record a measurement</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li>From <strong>Home</strong> ("+ Add a measurement") or the <span class="path">Tracking</span> tab.</li>
+            <li>Choose the type (blood pressure / blood sugar / weight…), enter the value — or use <strong>voice input</strong>.</li>
+            <li>For blood sugar, specify the <strong>moment</strong> (fasting, before/after a meal, bedtime); for blood pressure, the app also records the <strong>pulse</strong>.</li>
+            <li>Save: the value appears in the curve right away.</li>
+          </ol>
+        </div>
+
+        <h3>Read and correct your history</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">Tracking</span> tab › choose the measurement.</li>
+            <li>Slide across the chart to see each point; change the period to <strong>7 / 30 / 90 days</strong>.</li>
+            <li>In the list below, tap a row to <strong>edit</strong> or delete it.</li>
+          </ol>
+        </div>
+
+        <h3>Customize alert thresholds</h3>
+        <p>The colors (normal / to watch / high) rely on <strong>your</strong> thresholds, not on a diagnosis.</p>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">⚙️ Settings › Thresholds</span>.</li>
+            <li>Adjust the upper values for blood pressure, fasting and post-meal blood sugar, and the blood sugar unit (g/L, mmol/L or mg/dL).</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section id="traitements">
+        <h2><span class="em">💊</span> 4 · Treatments &amp; reminders</h2>
+        <p class="intro">Manage your medications, their schedules and their intake conditions, get reminders and track your adherence.</p>
+
+        <h3>Add a medication</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">Treatments</span> tab › <strong>"+"</strong>.</li>
+            <li>Enter the name, the dosage, the <strong>intake times</strong>, and a photo of the box if you like.</li>
+            <li>Open <strong>"Intake conditions"</strong> to specify: length of the course, "fasting" before/after, spacing from other medications, instructions.</li>
+            <li>Add the <strong>active substance (INN)</strong> so the app can spot duplicates and interactions.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Reminders:</strong> allow notifications when first prompted. The app reminds you at the chosen time, <strong>even offline</strong>, and shows the "fasting" instruction where relevant.</div>
+
+        <h3>Mark a dose taken &amp; track adherence</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li>On <strong>Home</strong> or in <span class="path">Treatments</span>, check off each dose <strong>Taken ✓ / Missed</strong>.</li>
+            <li>The <strong>"30-day adherence"</strong> card shows your percentage and any missed doses.</li>
+          </ol>
+        </div>
+
+        <h3>Side effects &amp; interactions</h3>
+        <ul class="feat">
+          <li>Note a side effect per medication (mild / moderate / strong + note) — included in the report.</li>
+          <li>The app flags <strong>duplicate substances</strong> and <strong>schedule conflicts</strong> (non-blocking warnings; to discuss with your doctor).</li>
+        </ul>
+      </section>
+
+      <!-- 5 -->
+      <section id="medical">
+        <h2><span class="em">📅</span> 5 · Medical tab</h2>
+        <p class="intro">Since version 2.4.0, the <strong>Medical</strong> tab brings together everything about your caregivers and deadlines: appointments, doctors, pharmacies and exams.</p>
+
+        <h3>Appointments</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">Medical › Appointments</span> tab › <strong>"+"</strong>.</li>
+            <li>Enter the reason, date, place, practitioner and a <strong>reminder</strong>.</li>
+            <li>Option: sync to your <strong>calendar</strong> (phone calendar or a CalDAV account configured in Settings).</li>
+          </ol>
+        </div>
+
+        <h3>My doctors &amp; pharmacies</h3>
+        <ul class="feat">
+          <li>Doctor directory: <strong>clickable</strong> phone and address, linked to your appointments.</li>
+          <li>Pharmacy directory + a <strong>pharmacy shopping list</strong> (medications to pick up, supplies to restock), shareable.</li>
+        </ul>
+
+        <h3>Prescriptions &amp; exams</h3>
+        <ul class="feat">
+          <li>Renewable prescriptions: validity, photos, linked medications, <strong>expiry alert</strong>.</li>
+          <li>Reminders for exams you shouldn't forget.</li>
+        </ul>
+      </section>
+
+      <!-- 6 -->
+      <section id="imports">
+        <h2><span class="em">📥</span> 6 · Automatic imports</h2>
+        <p class="intro">Lifecoon can fill in your data for you from a prescription, a report or a connected device. Everything happens <strong>on the device</strong>, offline.</p>
+
+        <h3>Import a prescription (PDF or photo)</h3>
+        <p>The app reads the prescription and offers to create the <strong>medications and their dosage</strong> automatically.</p>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">Treatments</span> tab or the <strong>"Scan"</strong> button › choose "Prescription".</li>
+            <li>Take a photo or select a PDF.</li>
+            <li>Check the proposed medications and schedules, <strong>correct if needed</strong>, then confirm.</li>
+          </ol>
+        </div>
+        <div class="warn">Always <strong>check</strong> what is recognized before confirming: automatic reading can make mistakes. It does not replace your doctor's prescription.</div>
+
+        <h3>Import an exam or a lab test</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">Tracking › Import</span> tab (or from "Custom measurements").</li>
+            <li>Choose a <strong>PDF</strong> report or a <strong>photo</strong>; the app extracts the values.</li>
+            <li>Assign each value to a measurement (blood sugar, weight, or a custom measurement), choose the date, confirm.</li>
+          </ol>
+        </div>
+
+        <h3>Bluetooth connected devices</h3>
+        <p>Import automatically from a compatible <strong>blood pressure monitor, glucose meter or scale</strong> (standard Bluetooth profiles).</p>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">Tracking › Connected devices</span> tab.</li>
+            <li>Allow Bluetooth, start the scan, select your device and follow the measurement.</li>
+          </ol>
+        </div>
+
+        <h3>Apple Health / Health Connect</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">⚙️ Settings › Health Connect</span> (Android) or <span class="path">Apple Health</span> (iOS).</li>
+            <li>Allow reading; the import (weight) is read-only and done locally.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section id="dossier">
+        <h2><span class="em">📄</span> 7 · Records tab &amp; doctor report</h2>
+        <p class="intro">The <strong>Records</strong> tab gathers everything you share or keep safe: the doctor report, the emergency card, vaccinations, documents and the monthly review.</p>
+
+        <h3>Generate the report for your doctor</h3>
+        <p>This is the flagship feature: a <strong>clear PDF</strong> for the period of your choice, with summaries, charts and readings, out-of-threshold values highlighted.</p>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">Records › Report</span> tab.</li>
+            <li>Choose the <strong>period</strong> (7 days, 30 days, 3 months, 12 months, all).</li>
+            <li>Generate, then <strong>share</strong> the PDF (email, printing, messaging…). You can also export to <strong>Excel</strong> or as <strong>grid tables</strong> (logbook style).</li>
+          </ol>
+        </div>
+
+        <h3>Emergency card</h3>
+        <p>Blood type, allergies, emergency contact and current treatments — useful for first responders.</p>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">Records › Emergency card</span> tab; fill in your information.</li>
+            <li>Enable <strong>"Show without unlocking"</strong> so a button appears on the lock screen (read-only).</li>
+          </ol>
+        </div>
+
+        <h3>Vaccinations, documents &amp; monthly review</h3>
+        <ul class="feat">
+          <li><strong>Vaccination record</strong> with reminders, included in the emergency card and the report.</li>
+          <li><strong>Documents</strong> (photo or PDF) with offline OCR to find the text again.</li>
+          <li><strong>Monthly review</strong> "Your health month": averages, trends, adherence, with PDF export and a reminder on the 1st of the month.</li>
+          <li><strong>Hospital handover sheet</strong> as a PDF (identity, allergies, treatments, vaccines, values, doctors).</li>
+        </ul>
+      </section>
+
+      <!-- 8 -->
+      <section id="analyses">
+        <h2><span class="em">📈</span> 8 · Advanced analysis</h2>
+
+        <h3>Custom measurements</h3>
+        <p>Create your own trackers (peak flow, a lab value…) with unit, decimals and thresholds.</p>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">⚙️ Settings › Custom measurements</span> › create a type (name, unit, thresholds).</li>
+            <li>It then appears in the <span class="path">Tracking</span> tab with its curve and history.</li>
+          </ol>
+        </div>
+
+        <h3>Pain tracking</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">Tracking › Pain</span> tab.</li>
+            <li>Tap the affected <strong>body area</strong>, set the <strong>intensity (0–10)</strong>, add a note. The trend is included in the report.</li>
+          </ol>
+        </div>
+
+        <h3>Correlations &amp; printable pill organizer</h3>
+        <ul class="feat">
+          <li><strong>Correlations:</strong> overlay two measurements and spot the links (with treatment start/end markers).</li>
+          <li><strong>Weekly pill organizer:</strong> a grid of moments × 7 days, exportable as a landscape PDF to print.</li>
+          <li><strong>Consultation preparation:</strong> write down your questions and a summary to take with you (PDF).</li>
+        </ul>
+      </section>
+
+      <!-- 9 -->
+      <section id="alertes">
+        <h2><span class="em">🔔</span> 9 · Alerts &amp; accessibility</h2>
+
+        <h3>Smart alerts</h3>
+        <p>The app watches your trends and notifies you for guidance only: rising morning blood pressure, blood sugar often above target, weight variation, drop in adherence.</p>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">⚙️ Settings › Smart alerts</span> to turn them on/off.</li>
+          </ol>
+        </div>
+
+        <h3>Reading comfort (seniors)</h3>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><span class="path">⚙️ Settings › Display</span>: enable <strong>"Large display"</strong> (bigger text and buttons) and <strong>"High contrast"</strong>.</li>
+            <li>Change the <strong>language</strong> among the 9 available in <span class="path">⚙️ Settings › Language</span>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section id="sauvegarde">
+        <h2><span class="em">💾</span> 10 · Backup &amp; never losing your data</h2>
+        <p class="intro">Your data never leaves the device: so keeping a copy is up to you. Lifecoon makes it simple and automatic.</p>
+        <div class="how">
+          <div class="lbl">How to do it</div>
+          <ol>
+            <li><strong>Manual backup:</strong> <span class="path">⚙️ Settings › Backup › Export</span> creates an <strong>encrypted file (.lifecoon)</strong> that you keep wherever you want.</li>
+            <li><strong>Automatic backup:</strong> choose a <strong>folder</strong> (e.g. iCloud Drive / Files); an encrypted copy is written there regularly — it <strong>survives an uninstall</strong>.</li>
+            <li><strong>Restore:</strong> <span class="path">⚙️ Settings › Backup › Import</span> and select your .lifecoon file.</li>
+          </ol>
+        </div>
+        <div class="tip"><strong>Changing phones:</strong> export a backup on the old one, install Lifecoon on the new one, then import the file. App updates <strong>keep</strong> your data.</div>
+      </section>
+
+      <!-- 11 -->
+      <section id="confidentialite">
+        <h2><span class="em">🔒</span> 11 · Privacy &amp; security</h2>
+        <ul class="feat">
+          <li>No data sent over the Internet, no account, no ads, no trackers.</li>
+          <li><strong>Encrypted</strong> database on the device, locking by PIN and biometrics.</li>
+          <li>You can <strong>erase everything</strong> at any time (<span class="path">⚙️ Settings › Data › Delete</span>).</li>
+          <li>Checking for updates transmits <strong>no</strong> personal data.</li>
+        </ul>
+        <p style="margin-top:10px">Full details in the <a href="privacy.html" style="color:var(--teal);font-weight:700">privacy policy</a>.</p>
+      </section>
+
+      <!-- 12 -->
+      <section id="faq">
+        <h2><span class="em">❓</span> 12 · Frequently asked questions</h2>
+        <h3>Does the app replace a doctor?</h3>
+        <p>No. Lifecoon is a tracking logbook. It does not make any diagnosis and does not replace medical advice. Alerts rely solely on the thresholds you define.</p>
+        <h3>Is it really free?</h3>
+        <p>Yes, entirely: no paid features, no subscription, no in-app purchases.</p>
+        <h3>Is my data in the cloud?</h3>
+        <p>No. Everything stays on your device, encrypted. The backups you create go wherever you choose.</p>
+        <h3>How do I get updates?</h3>
+        <p>On iPhone via the App Store. On Android via Google Play or the direct APK: the app notifies you automatically when a new version is available.</p>
+      </section>
+
+      <a class="backtop" href="#">↑ Back to top</a>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>Lifecoon — Health Tracking</strong> · by Bengacoon · Available in 9 languages<br>
+    <a href="index.html" data-i18n="footer_home">Home</a> &nbsp;·&nbsp;
+    <a href="guide.html" data-i18n="footer_guide">Guide</a> &nbsp;·&nbsp;
+    <a href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md" data-i18n="footer_versions">Versions</a> &nbsp;·&nbsp;
+    <a href="privacy.html" data-i18n="footer_privacy">Privacy policy</a> &nbsp;·&nbsp; © 2026 Bengacoon
+    <p class="disc">Lifecoon is a personal health logbook. It does not make any diagnosis, does not constitute a treatment and does not replace the advice of a healthcare professional. Alerts rely solely on the thresholds you define.</p>
+  </div>
+</footer>
+
+<script>
+/* Sélecteur de langue : navigue entre les variantes traduites de cette page. */
+(function(){
+  var LANGS={fr:'Français',en:'English',de:'Deutsch',it:'Italiano',pt:'Português',es:'Español',sv:'Svenska',nb:'Norsk',fi:'Suomi'};
+  var BASE='guide';
+  function fileFor(l){ return l==='fr' ? BASE+'.html' : BASE+'-'+l+'.html'; }
+  var m=location.pathname.match(/guide(?:-([a-z]{2}))?\.html/);
+  var cur=(m&&m[1])||'fr';
+  // Respecter le choix mémorisé sur l'accueil (redirige une seule fois vers la bonne variante).
+  try{ var st=localStorage.getItem('lifecoon_lang'); if(st&&st!==cur&&LANGS[st]){ location.replace(fileFor(st)); return; } }catch(e){}
+  document.addEventListener('DOMContentLoaded',function(){
+    var sel=document.getElementById('langSel'); if(!sel) return;
+    Object.keys(LANGS).forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=LANGS[c];if(c===cur)o.selected=true;sel.appendChild(o);});
+    sel.addEventListener('change',function(){ try{localStorage.setItem('lifecoon_lang',sel.value);}catch(e){} location.href=fileFor(sel.value); });
+  });
+})();
+</script>
+</body>
+</html>
