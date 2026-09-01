@@ -33,6 +33,9 @@
   header nav a{color:var(--muted);text-decoration:none}
   header nav a:hover{color:var(--teal)}
   @media(max-width:640px){header nav{display:none}}
+  .langsel{margin-left:14px;background:#fff;border:1px solid var(--creme-2);color:var(--texte);
+    font-size:13px;font-weight:600;border-radius:9px;padding:6px 8px;cursor:pointer}
+  @media(max-width:640px){.langsel{margin-left:auto}}
 
   /* Hero */
   .hero{background:linear-gradient(160deg,var(--teal) 0%,var(--teal-fonce) 100%);color:#fff;text-align:center;padding:72px 0 84px;position:relative;overflow:hidden}
@@ -115,14 +118,15 @@
 <header>
   <div class="wrap">
     <img src="assets/icon.png" alt="Lifecoon">
-    <div class="brand">Lifecoon<small>par Bengacoon</small></div>
+    <div class="brand">Lifecoon<small data-i18n="brand_by">par Bengacoon</small></div>
     <nav>
-      <a href="#fonctions">Fonctions</a>
-      <a href="guide.html">Guide</a>
-      <a href="#versions">Nouveautés</a>
-      <a href="#telecharger">Télécharger</a>
-      <a href="privacy.html">Confidentialité</a>
+      <a href="#fonctions" data-i18n="nav_features">Fonctions</a>
+      <a href="guide.html" data-i18n="nav_guide">Guide</a>
+      <a href="#versions" data-i18n="nav_news">Nouveautés</a>
+      <a href="#telecharger" data-i18n="nav_download">Télécharger</a>
+      <a href="privacy.html" data-i18n="nav_privacy">Confidentialité</a>
     </nav>
+    <select id="langSel" class="langsel" aria-label="Language"></select>
   </div>
 </header>
 
@@ -130,18 +134,18 @@
   <span class="blob b1"></span><span class="blob b2"></span>
   <div class="wrap">
     <img class="logo" src="assets/icon.png" alt="Lifecoon">
-    <div class="par">par Bengacoon</div>
+    <div class="par" data-i18n="brand_by">par Bengacoon</div>
     <h1>Lifecoon</h1>
-    <p class="lead">Votre carnet de santé de poche : suivez vos constantes et vos traitements, gardez vos ordonnances et vos documents à portée de main, et générez en un geste un <strong>rapport pour votre médecin</strong>.</p>
+    <p class="lead" data-i18n-html="hero_lead">Votre carnet de santé de poche : suivez vos constantes et vos traitements, gardez vos ordonnances et vos documents à portée de main, et générez en un geste un <strong>rapport pour votre médecin</strong>.</p>
     <div class="stores">
       <a class="store" href="https://apps.apple.com/fr/app/id6785308739">
-        <span class="em"></span><span><small>Télécharger sur</small>App&nbsp;Store</span>
+        <span class="em"></span><span><small data-i18n="store_get">Télécharger sur</small>App&nbsp;Store</span>
       </a>
       <a class="store soon" href="#" aria-disabled="true">
-        <span class="em">▶</span><span><small>Bientôt sur</small>Google&nbsp;Play</span>
+        <span class="em">▶</span><span><small data-i18n="store_soon">Bientôt sur</small>Google&nbsp;Play</span>
       </a>
       <a class="store" href="https://github.com/jdviallat/lifecoon-updates/releases/latest">
-        <span class="em">⬇</span><span><small>Android</small>APK&nbsp;direct</span>
+        <span class="em">⬇</span><span><small data-i18n="store_android">Android</small><span data-i18n="store_apk">APK&nbsp;direct</span></span>
       </a>
     </div>
   </div>
@@ -149,59 +153,59 @@
 
 <div class="shots">
   <div class="inner">
-      <figure><img src="assets/capture-1.png" alt="Accueil" loading="lazy" width="285" height="620"><figcaption>Accueil</figcaption></figure>
-      <figure><img src="assets/capture-2.png" alt="Courbes de suivi" loading="lazy" width="285" height="620"><figcaption>Courbes de suivi</figcaption></figure>
-      <figure><img src="assets/capture-3.png" alt="Traitements" loading="lazy" width="285" height="620"><figcaption>Traitements</figcaption></figure>
-      <figure><img src="assets/capture-4.png" alt="Rendez-vous" loading="lazy" width="285" height="620"><figcaption>Rendez-vous</figcaption></figure>
-      <figure><img src="assets/capture-5.png" alt="Exports" loading="lazy" width="285" height="620"><figcaption>Exports</figcaption></figure>
+      <figure><img src="assets/capture-1.png" alt="Accueil" loading="lazy" width="285" height="620"><figcaption data-i18n="shot_home">Accueil</figcaption></figure>
+      <figure><img src="assets/capture-2.png" alt="Courbes de suivi" loading="lazy" width="285" height="620"><figcaption data-i18n="shot_charts">Courbes de suivi</figcaption></figure>
+      <figure><img src="assets/capture-3.png" alt="Traitements" loading="lazy" width="285" height="620"><figcaption data-i18n="shot_treatments">Traitements</figcaption></figure>
+      <figure><img src="assets/capture-4.png" alt="Rendez-vous" loading="lazy" width="285" height="620"><figcaption data-i18n="shot_appts">Rendez-vous</figcaption></figure>
+      <figure><img src="assets/capture-5.png" alt="Exports" loading="lazy" width="285" height="620"><figcaption data-i18n="shot_exports">Exports</figcaption></figure>
   </div>
 </div>
 
 <section id="fonctions">
   <div class="wrap">
-    <div class="eyebrow">Ce que fait l'app</div>
-    <h2>Toute votre santé, au même endroit</h2>
-    <p class="sub">Pensée pour les patients chroniques, les seniors et les aidants — claire, lisible, sans compte ni jargon.</p>
+    <div class="eyebrow" data-i18n="feat_eyebrow">Ce que fait l'app</div>
+    <h2 data-i18n="feat_title">Toute votre santé, au même endroit</h2>
+    <p class="sub" data-i18n="feat_sub">Pensée pour les patients chroniques, les seniors et les aidants — claire, lisible, sans compte ni jargon.</p>
     <div class="grid">
       <div class="card">
-        <span class="em">❤️</span><h3>Constantes &amp; suivi</h3>
-        <p>Tension (avec pouls), glycémie, poids/IMC, SpO₂, température, fréquence cardiaque. Graphiques interactifs, tendances, moyennes matin/soir et HbA1c estimée.</p>
+        <span class="em">❤️</span><h3 data-i18n="feat_1_t">Constantes &amp; suivi</h3>
+        <p data-i18n="feat_1_d">Tension (avec pouls), glycémie, poids/IMC, SpO₂, température, fréquence cardiaque. Graphiques interactifs, tendances, moyennes matin/soir et HbA1c estimée.</p>
       </div>
       <div class="card">
-        <span class="em">💊</span><h3>Traitements &amp; rappels</h3>
-        <p>Médicaments, dosages et horaires précis, photo de la boîte. Rappels de prise, bouton « Pris ✓ », snooze et suivi d'observance sur 30 jours.</p>
+        <span class="em">💊</span><h3 data-i18n="feat_2_t">Traitements &amp; rappels</h3>
+        <p data-i18n="feat_2_d">Médicaments, dosages et horaires précis, photo de la boîte. Rappels de prise, bouton « Pris ✓ », snooze et suivi d'observance sur 30 jours.</p>
       </div>
       <div class="card">
-        <span class="em">📋</span><h3>Ordonnances &amp; pharmacie</h3>
-        <p>Ordonnances renouvelables avec alerte d'expiration, appareils et consommables (stock, code-barres), liste de courses pharmacie et carnet de pharmacies.</p>
+        <span class="em">📋</span><h3 data-i18n="feat_3_t">Ordonnances &amp; pharmacie</h3>
+        <p data-i18n="feat_3_d">Ordonnances renouvelables avec alerte d'expiration, appareils et consommables (stock, code-barres), liste de courses pharmacie et carnet de pharmacies.</p>
       </div>
       <div class="card">
-        <span class="em">📅</span><h3>Rendez-vous &amp; documents</h3>
-        <p>Rendez-vous médicaux avec rappels et synchro agenda, documents (photo ou PDF) avec <strong>OCR</strong> hors-ligne. Un bouton « Scanner » pré-remplit tout pour vous.</p>
+        <span class="em">📅</span><h3 data-i18n="feat_4_t">Rendez-vous &amp; documents</h3>
+        <p data-i18n-html="feat_4_d">Rendez-vous médicaux avec rappels et synchro agenda, documents (photo ou PDF) avec <strong>OCR</strong> hors-ligne. Un bouton « Scanner » pré-remplit tout pour vous.</p>
       </div>
       <div class="card">
-        <span class="em">🚑</span><h3>Carte d'urgence</h3>
-        <p>Groupe sanguin, allergies, personne à prévenir et vos traitements en cours. Affichable en lecture seule <strong>depuis l'écran de verrouillage</strong>, sans ouvrir l'app.</p>
+        <span class="em">🚑</span><h3 data-i18n="feat_5_t">Carte d'urgence</h3>
+        <p data-i18n-html="feat_5_d">Groupe sanguin, allergies, personne à prévenir et vos traitements en cours. Affichable en lecture seule <strong>depuis l'écran de verrouillage</strong>, sans ouvrir l'app.</p>
       </div>
       <div class="card">
-        <span class="em">📄</span><h3>Rapport pour le médecin</h3>
-        <p>Un PDF clair sur la période de votre choix : résumés, graphiques et relevés, valeurs hors seuils en surbrillance. Exports Excel et tableaux en grille, sauvegarde chiffrée.</p>
+        <span class="em">📄</span><h3 data-i18n="feat_6_t">Rapport pour le médecin</h3>
+        <p data-i18n="feat_6_d">Un PDF clair sur la période de votre choix : résumés, graphiques et relevés, valeurs hors seuils en surbrillance. Exports Excel et tableaux en grille, sauvegarde chiffrée.</p>
       </div>
       <div class="card">
-        <span class="em">🗓️</span><h3>Pilulier &amp; consultation</h3>
-        <p>Pilulier de la semaine imprimable (matin/midi/soir/coucher), et préparation de rendez-vous : vos questions + un récapitulatif PDF pour le médecin.</p>
+        <span class="em">🗓️</span><h3 data-i18n="feat_7_t">Pilulier &amp; consultation</h3>
+        <p data-i18n="feat_7_d">Pilulier de la semaine imprimable (matin/midi/soir/coucher), et préparation de rendez-vous : vos questions + un récapitulatif PDF pour le médecin.</p>
       </div>
       <div class="card">
-        <span class="em">📈</span><h3>Analyses &amp; corrélations</h3>
-        <p>Mesures personnalisées, corrélations entre deux mesures, bilan mensuel « votre mois de santé », et import d'une analyse de labo par photo (OCR).</p>
+        <span class="em">📈</span><h3 data-i18n="feat_8_t">Analyses &amp; corrélations</h3>
+        <p data-i18n="feat_8_d">Mesures personnalisées, corrélations entre deux mesures, bilan mensuel « votre mois de santé », et import d'une analyse de labo par photo (OCR).</p>
       </div>
       <div class="card">
-        <span class="em">🔔</span><h3>Alertes &amp; accessibilité</h3>
-        <p>Alertes intelligentes sur vos tendances, doublons &amp; interactions de médicaments, suivi des effets secondaires, grand affichage et lecture vocale du jour.</p>
+        <span class="em">🔔</span><h3 data-i18n="feat_9_t">Alertes &amp; accessibilité</h3>
+        <p data-i18n="feat_9_d">Alertes intelligentes sur vos tendances, doublons &amp; interactions de médicaments, suivi des effets secondaires, grand affichage et lecture vocale du jour.</p>
       </div>
     </div>
     <p style="text-align:center;margin-top:34px">
-      <a href="guide.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;font-weight:700;padding:14px 26px;border-radius:14px;text-decoration:none;font-size:15.5px;box-shadow:0 8px 22px rgba(69,123,122,.25)">📖 Lire le guide d'utilisation complet</a>
+      <a href="guide.html" data-i18n="feat_guide_cta" style="display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;font-weight:700;padding:14px 26px;border-radius:14px;text-decoration:none;font-size:15.5px;box-shadow:0 8px 22px rgba(69,123,122,.25)">📖 Lire le guide d'utilisation complet</a>
     </p>
   </div>
 </section>
@@ -209,54 +213,54 @@
 <section id="gratuit" class="free-band">
   <div class="wrap">
     <div class="box">
-      <span class="price">100 % gratuit · sans abonnement</span>
-      <h2>Toutes les fonctions, offertes</h2>
-      <p class="sub" style="margin-bottom:6px">Aucun achat, aucune limite, aucune publicité.</p>
+      <span class="price" data-i18n="free_price">100 % gratuit · sans abonnement</span>
+      <h2 data-i18n="free_title">Toutes les fonctions, offertes</h2>
+      <p class="sub" style="margin-bottom:6px" data-i18n="free_sub">Aucun achat, aucune limite, aucune publicité.</p>
       <ul>
-        <li>Toutes les mesures et tous les graphiques</li>
-        <li>Traitements, ordonnances, appareils et rendez-vous</li>
-        <li>Rapport médecin PDF, exports Excel et sauvegarde</li>
-        <li>Disponible en 9 langues, multi-profils (famille)</li>
+        <li data-i18n="free_li1">Toutes les mesures et tous les graphiques</li>
+        <li data-i18n="free_li2">Traitements, ordonnances, appareils et rendez-vous</li>
+        <li data-i18n="free_li3">Rapport médecin PDF, exports Excel et sauvegarde</li>
+        <li data-i18n="free_li4">Disponible en 9 langues, multi-profils (famille)</li>
       </ul>
-      <p class="free">Lifecoon est financé par Bengacoon : votre santé n'est pas un produit.</p>
+      <p class="free" data-i18n="free_note">Lifecoon est financé par Bengacoon : votre santé n'est pas un produit.</p>
     </div>
   </div>
 </section>
 
 <section id="versions">
   <div class="wrap">
-    <div class="eyebrow">Toujours en mouvement</div>
-    <h2>Les dernières versions</h2>
-    <p class="sub">Lifecoon évolue vite. Voici les nouveautés récentes — l'historique complet est sur GitHub.</p>
+    <div class="eyebrow" data-i18n="ver_eyebrow">Toujours en mouvement</div>
+    <h2 data-i18n="ver_title">Les dernières versions</h2>
+    <p class="sub" data-i18n="ver_sub">Lifecoon évolue vite. Voici les nouveautés récentes — l'historique complet est sur GitHub.</p>
     <div class="vlist">
-      <div class="vrow"><div class="v">2.4.0 <small>Navigation simplifiée</small></div><p>Les fonctions ne sont plus enfouies dans les Réglages : nouvel onglet « Médical » (rendez-vous, médecins, pharmacies, examens) et « Dossier » (rapport, carte d'urgence, vaccination, documents), et une protection renforcée contre la perte de données à la mise à jour.</p></div>
-      <div class="vrow"><div class="v">2.3.0 <small>Ordonnances &amp; capteurs</small></div><p>Importez une ordonnance (PDF/photo) : les médicaments et la posologie sont créés automatiquement. Import de rapports d'examens PDF, objets connectés Bluetooth, carnet de vaccination, suivi de la douleur, carnet de médecins et fiche de liaison hôpital.</p></div>
-      <div class="vrow"><div class="v">2.2.0 <small>Données protégées</small></div><p>Sauvegarde chiffrée automatique dans un dossier que vous choisissez (qui survit à une désinstallation), sauvegarde avant chaque mise à jour, et restauration au transfert de téléphone — sans copie dans le cloud.</p></div>
-      <div class="vrow"><div class="v">2.1.1 <small>Mises à jour APK</small></div><p>La version installée hors Play Store vérifie désormais automatiquement les nouvelles versions au lancement et vous prévient (désactivable dans les Réglages).</p></div>
-      <div class="vrow"><div class="v">2.1.0 <small>Alertes intelligentes</small></div><p>L'app surveille vos tendances et vous prévient : tension du matin en hausse, glycémie souvent au-dessus de la cible, variation de poids, baisse d'observance.</p></div>
-      <div class="vrow"><div class="v">2.0.0 <small>Accessibilité &amp; suivi</small></div><p>Grand affichage + contraste + lecture vocale du jour, bilan mensuel « votre mois de santé », préparation de consultation, import d'une analyse de labo par photo.</p></div>
-      <div class="vrow"><div class="v">1.9.0 <small>Pilulier &amp; analyses</small></div><p>Pilulier de la semaine imprimable, corrélations entre deux mesures, doublons &amp; interactions de médicaments, suivi des effets secondaires.</p></div>
-      <div class="vrow"><div class="v">1.8.0 <small>Médicaments avancés</small></div><p>Conditions de prise (à jeun, espacement, durée), détection des conflits d'horaire, mesures personnalisées, valeurs hors seuils en surbrillance dans le rapport.</p></div>
-      <div class="vrow"><div class="v">1.7.x <small>Ordonnances &amp; urgence</small></div><p>Ordonnances renouvelables, appareils &amp; consommables, liste de courses pharmacie, carte d'urgence affichable depuis l'écran de verrouillage.</p></div>
+      <div class="vrow"><div class="v">2.4.0 <small data-i18n="v1_l">Navigation simplifiée</small></div><p data-i18n="v1_d">Les fonctions ne sont plus enfouies dans les Réglages : nouvel onglet « Médical » (rendez-vous, médecins, pharmacies, examens) et « Dossier » (rapport, carte d'urgence, vaccination, documents), et une protection renforcée contre la perte de données à la mise à jour.</p></div>
+      <div class="vrow"><div class="v">2.3.0 <small data-i18n="v2_l">Ordonnances &amp; capteurs</small></div><p data-i18n="v2_d">Importez une ordonnance (PDF/photo) : les médicaments et la posologie sont créés automatiquement. Import de rapports d'examens PDF, objets connectés Bluetooth, carnet de vaccination, suivi de la douleur, carnet de médecins et fiche de liaison hôpital.</p></div>
+      <div class="vrow"><div class="v">2.2.0 <small data-i18n="v3_l">Données protégées</small></div><p data-i18n="v3_d">Sauvegarde chiffrée automatique dans un dossier que vous choisissez (qui survit à une désinstallation), sauvegarde avant chaque mise à jour, et restauration au transfert de téléphone — sans copie dans le cloud.</p></div>
+      <div class="vrow"><div class="v">2.1.1 <small data-i18n="v4_l">Mises à jour APK</small></div><p data-i18n="v4_d">La version installée hors Play Store vérifie désormais automatiquement les nouvelles versions au lancement et vous prévient (désactivable dans les Réglages).</p></div>
+      <div class="vrow"><div class="v">2.1.0 <small data-i18n="v5_l">Alertes intelligentes</small></div><p data-i18n="v5_d">L'app surveille vos tendances et vous prévient : tension du matin en hausse, glycémie souvent au-dessus de la cible, variation de poids, baisse d'observance.</p></div>
+      <div class="vrow"><div class="v">2.0.0 <small data-i18n="v6_l">Accessibilité &amp; suivi</small></div><p data-i18n="v6_d">Grand affichage + contraste + lecture vocale du jour, bilan mensuel « votre mois de santé », préparation de consultation, import d'une analyse de labo par photo.</p></div>
+      <div class="vrow"><div class="v">1.9.0 <small data-i18n="v7_l">Pilulier &amp; analyses</small></div><p data-i18n="v7_d">Pilulier de la semaine imprimable, corrélations entre deux mesures, doublons &amp; interactions de médicaments, suivi des effets secondaires.</p></div>
+      <div class="vrow"><div class="v">1.8.0 <small data-i18n="v8_l">Médicaments avancés</small></div><p data-i18n="v8_d">Conditions de prise (à jeun, espacement, durée), détection des conflits d'horaire, mesures personnalisées, valeurs hors seuils en surbrillance dans le rapport.</p></div>
+      <div class="vrow"><div class="v">1.7.x <small data-i18n="v9_l">Ordonnances &amp; urgence</small></div><p data-i18n="v9_d">Ordonnances renouvelables, appareils &amp; consommables, liste de courses pharmacie, carte d'urgence affichable depuis l'écran de verrouillage.</p></div>
     </div>
-    <a class="more" href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md">Voir tout l'historique des versions →</a>
+    <a class="more" href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md" data-i18n="ver_more">Voir tout l'historique des versions →</a>
   </div>
 </section>
 
 <section id="telecharger" class="download">
   <div class="wrap">
     <div class="box">
-      <h2>Prêt à prendre votre santé en main ?</h2>
-      <p>Sur iPhone, Android via Google Play, ou en APK direct. Gratuit, sans compte, et vos données restent chez vous.</p>
+      <h2 data-i18n="dl_title">Prêt à prendre votre santé en main ?</h2>
+      <p data-i18n="dl_sub">Sur iPhone, Android via Google Play, ou en APK direct. Gratuit, sans compte, et vos données restent chez vous.</p>
       <div class="btns">
         <a class="store" href="https://apps.apple.com/fr/app/id6785308739">
-          <span class="em"></span><span><small>Télécharger sur</small>App&nbsp;Store</span>
+          <span class="em"></span><span><small data-i18n="store_get">Télécharger sur</small>App&nbsp;Store</span>
         </a>
         <a class="store soon" href="#" aria-disabled="true">
-          <span class="em">▶</span><span><small>Bientôt sur</small>Google&nbsp;Play</span>
+          <span class="em">▶</span><span><small data-i18n="store_soon">Bientôt sur</small>Google&nbsp;Play</span>
         </a>
         <a class="store" href="https://github.com/jdviallat/lifecoon-updates/releases/latest">
-          <span class="em">⬇</span><span><small>Android</small>APK&nbsp;direct</span>
+          <span class="em">⬇</span><span><small data-i18n="store_android">Android</small><span data-i18n="store_apk">APK&nbsp;direct</span></span>
         </a>
       </div>
     </div>
@@ -265,21 +269,22 @@
 
 <section id="confidentialite" class="privacy">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--or-clair)">Vos données, chez vous</div>
-    <h2>Rien ne quitte votre téléphone</h2>
-    <p class="sub">Aucune donnée envoyée sur Internet, aucun compte à créer. Base chiffrée, verrouillage par code ou Face ID / empreinte, export et suppression totale quand vous le souhaitez.</p>
+    <div class="eyebrow" style="color:var(--or-clair)" data-i18n="priv_eyebrow">Vos données, chez vous</div>
+    <h2 data-i18n="priv_title">Rien ne quitte votre téléphone</h2>
+    <p class="sub" data-i18n="priv_sub">Aucune donnée envoyée sur Internet, aucun compte à créer. Base chiffrée, verrouillage par code ou Face ID / empreinte, export et suppression totale quand vous le souhaitez.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <strong>Lifecoon — Suivi Santé</strong> · par Bengacoon · Disponible en 9 langues<br>
-    <a href="guide.html">Guide d'utilisation</a> &nbsp;·&nbsp;
-    <a href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md">Versions</a> &nbsp;·&nbsp;
-    <a href="privacy.html">Politique de confidentialité</a> &nbsp;·&nbsp; © 2026 Bengacoon
-    <p class="disc">Lifecoon est un carnet de santé personnel. Il n'établit aucun diagnostic, ne constitue pas un traitement et ne remplace pas l'avis d'un professionnel de santé. Les alertes reposent uniquement sur les seuils que vous définissez.</p>
+    <span data-i18n-html="footer_line"><strong>Lifecoon — Suivi Santé</strong> · par Bengacoon · Disponible en 9 langues</span><br>
+    <a href="guide.html" data-i18n="footer_guide">Guide d'utilisation</a> &nbsp;·&nbsp;
+    <a href="https://github.com/jdviallat/lifecoon-updates/blob/main/CHANGELOG.md" data-i18n="footer_versions">Versions</a> &nbsp;·&nbsp;
+    <a href="privacy.html" data-i18n="footer_privacy">Politique de confidentialité</a> &nbsp;·&nbsp; © 2026 Bengacoon
+    <p class="disc" data-i18n="footer_disc">Lifecoon est un carnet de santé personnel. Il n'établit aucun diagnostic, ne constitue pas un traitement et ne remplace pas l'avis d'un professionnel de santé. Les alertes reposent uniquement sur les seuils que vous définissez.</p>
   </div>
 </footer>
 
+<script src="i18n.js" defer></script>
 </body>
 </html>
